@@ -1,0 +1,48 @@
+.searchHistory button{
+    display: block;
+    justify-content: center;
+}
+
+img{
+    float: left;
+
+}
+
+#GIPHY img{
+    margin: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+/* styling for sticky footer */
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  .wrapper {
+    min-height: 100%;
+
+    margin-bottom: -310px;
+  }
+  .footerEl,
+  .push {
+    height: 310px;
+    padding: 0%;
+  }
+
+  .footerEl .column{
+      padding:0%;
+  }
+ 
+  .footerEl img{
+      margin:0%;
+  }
+ 
+  
+
