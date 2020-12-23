@@ -19,7 +19,7 @@ $(function () {
             var wikiaLink = data.data.results[0].urls[1].url;
             $("#wikiaLink").attr("href", wikiaLink).text("Wikia Link");
             var imageLink = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
-            $("#heroPic").attr("src", imageLink)
+            $("#heroPic").attr("src", imageLink).attr("class", "characterProfileImage")
             if (!characterSearchHistory.includes(data.data.results[0].name)) {
                 characterSearchHistory.unshift(data.data.results[0].name);
                 createButtons();
@@ -54,9 +54,11 @@ $(function () {
         searchComicCharacter($(this).val());
     })
 
-
-
-
+    $(".searchBar").on("submit", function (event) {
+        event.preventDefault();
+        searchComicCharacter($(".searchInput").val());
+        $(".searchInput").val("");
+    })
 
     //giphy API
     var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
@@ -64,14 +66,6 @@ $(function () {
     var searchResult = "wolverine";
 
     var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + searchResult + "&limit=25&offset=&rating=g&lang=en";
-
-    $(".searchBar").on("submit", function (event) {
-        event.preventDefault();
-        searchComicCharacter($(".searchInput").val());
-        $(".searchInput").val("");
-
-    })
-
 
 
     //console.log(giphyQueryURL);
@@ -84,10 +78,6 @@ $(function () {
         
         var giphy = data.data[0].images.original.url;
        $("#giphy1").attr("src", giphy)
-
-
-       
-       
 
         $("#giphy1").append(giphy)
     })
