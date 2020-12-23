@@ -4,6 +4,8 @@ $(function () {
     var timeStamp = "1";
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
+    var lastSearchedCharacter;
+    var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
 
     init();
 
@@ -52,18 +54,10 @@ $(function () {
 
     $(".searchHistory").on("click", ".characterButton", function () {
         searchComicCharacter($(this).val());
+        giphyF($(this).val());
+
+
     })
-
-
-
-
-
-    //giphy API
-    var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
-
-    var searchResult = "wolverine";
-
-    var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + searchResult + "&limit=25&offset=&rating=g&lang=en";
 
     $(".searchBar").on("submit", function (event) {
         event.preventDefault();
@@ -72,26 +66,35 @@ $(function () {
 
     })
 
+    function giphyF(searchResult) {
+        //giphy API
 
 
-    //console.log(giphyQueryURL);
-    $.ajax({
-        url: giphyQueryURL,
-        method: "GET",
-    }).then(function (data) {
-       // $(".giphyDump").text(JSON.stringify(data, null, 4));
-        console.log(giphyQueryURL);
-        
-        var giphy = data.data[0].images.original.url;
-       $("#giphy1").attr("src", giphy)
+        var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + searchResult + "&limit=25&offset=&rating=g&lang=en";
 
 
-       
-       
 
-        $("#giphy1").append(giphy)
-    })
+        //console.log(giphyQueryURL);
+        $.ajax({
+            url: giphyQueryURL,
+            method: "GET",
+        }).then(function (data) {
+            // $(".giphyDump").text(JSON.stringify(data, null, 4));
+            console.log(giphyQueryURL);
 
+            var giphy = data.data[0].images.original.url;
+            $("#giphy1").attr("src", giphy)
+
+
+
+
+        })
+
+
+
+
+
+    }
 
 
 
