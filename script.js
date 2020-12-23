@@ -4,9 +4,10 @@ $(function () {
     var timeStamp = "1";
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
+    var lastSearchedCharacter;
 
-    // searchComicCharacter("Wolverine");
-    createButtons();
+
+    init();
 
     function searchComicCharacter(searchResult) {
         var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=" + timeStamp + "&apikey=" + apiMarvelKey + "&hash=" + hash;
@@ -15,28 +16,39 @@ $(function () {
             url: marvelQueryURL,
             method: "GET",
         }).then(function (data) {
-            // $(".marvelDump").text(JSON.stringify(data,null,8));
-            $(".marvelDump").empty();
-            var nameEl = $("<div>").text(data.data.results[0].name);
-            var descriptionEl = $("<div>").text(data.data.results[0].description);
+            $("#characterName").text(data.data.results[0].name);
+            $("#characterDescription").text(data.data.results[0].description);
             var wikiaLink = data.data.results[0].urls[1].url;
-            var wikiaLinkEl = $("<a>").attr("href", wikiaLink).text("Wikia Link");
+            $("#wikiaLink").attr("href", wikiaLink).text("Wikia Link");
             var imageLink = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
-            var thumbnailEl = $("<img>").attr("src", imageLink)
-            $(".marvelDump").append(nameEl, descriptionEl, wikiaLinkEl, thumbnailEl);
+            $("#heroPic").attr("src", imageLink)
             if (!characterSearchHistory.includes(data.data.results[0].name)) {
-                characterSearchHistory.push(data.data.results[0].name);
+                characterSearchHistory.unshift(data.data.results[0].name);
+                createButtons();
+                localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
             }
+            console.log(characterSearchHistory);
+            //Records the last searched character and stores to local storage
+            localStorage.setItem("lastSearched", data.data.results[0].name);
         })
     }
 
+    function init() {
+        var storedButtons = JSON.parse(localStorage.getItem("buttons"));
+        if (storedButtons !== null) {
+            characterSearchHistory = storedButtons;
+        }
+        createButtons();
+        searchComicCharacter(localStorage.getItem("lastSearched"));
+    }
 
+    //Creates the character buttons
     function createButtons() {
-        $(".characterButtonsDump").empty();
+        $(".searchHistory").empty();
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
             var characterButtonEl = $("<button>").attr("value", characterSearchHistory[buttonCount]).text(characterSearchHistory[buttonCount]);
             characterButtonEl.attr("class", "characterButton");
-            $(".characterButtonsDump").append(characterButtonEl);
+            $(".searchHistory").append(characterButtonEl);
         }
     }
 
@@ -57,6 +69,13 @@ $(function () {
     var searchResult = "wolverine";
 
     var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + searchResult + "&limit=25&offset=&rating=g&lang=en";
+
+    $(".searchBar").on("submit", function (event) {
+        event.preventDefault();
+        searchComicCharacter($(".searchInput").val());
+        $(".searchInput").val("");
+
+    })
 
 
 
