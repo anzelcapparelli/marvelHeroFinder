@@ -43,6 +43,31 @@ $(function () {
     $(".characterButton").on("click", function () {
         searchComicCharacter($(this).val());
     })
+});
+
+
+
+$function() {
+    //giphy API
+    var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
+qIsSesrchResult = 
+limit = 25;
+offSet = 0&;
+rating = "pg-13";
+
+var giphyQueryURL = "https://api.giphy.com/v1/" + qIsSesrchResult + apiGiphyKey + "&q="   "&"+ "limit=" +limit+ & +"offset=" + offSet + "rating=" + rating +"&lang=en"
+gifs/search?api_key=
+
+
+
+
+console.log(marvelQueryURL);
+$.ajax({
+    url: giphyQueryURL,
+    method: "GET",
+}).then(function (data) {
+    $(".giphyDump").text(JSON.stringify(data,null,4));
+})
 
 
     
