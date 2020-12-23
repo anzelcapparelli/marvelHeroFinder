@@ -3,7 +3,7 @@ $(function () {
     var apiMarvelKey = "97a93e9e494106d892973948f5b253d9";
     var timeStamp = "1";
     var hash = "c32debe50244fc7a722036892da77e19";
-    var characterSearchHistory = ["Wolverine","Cyclops","Thor","Black Widow"];
+    var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
 
     // searchComicCharacter("Wolverine");
     createButtons();
@@ -20,11 +20,11 @@ $(function () {
             var nameEl = $("<div>").text(data.data.results[0].name);
             var descriptionEl = $("<div>").text(data.data.results[0].description);
             var wikiaLink = data.data.results[0].urls[1].url;
-            var wikiaLinkEl = $("<a>").attr("href",wikiaLink).text("Wikia Link");
+            var wikiaLinkEl = $("<a>").attr("href", wikiaLink).text("Wikia Link");
             var imageLink = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
-            var thumbnailEl = $("<img>").attr("src",imageLink)
-            $(".marvelDump").append(nameEl,descriptionEl,wikiaLinkEl, thumbnailEl);
-            if(!characterSearchHistory.includes(data.data.results[0].name)) {
+            var thumbnailEl = $("<img>").attr("src", imageLink)
+            $(".marvelDump").append(nameEl, descriptionEl, wikiaLinkEl, thumbnailEl);
+            if (!characterSearchHistory.includes(data.data.results[0].name)) {
                 characterSearchHistory.push(data.data.results[0].name);
             }
         })
@@ -33,44 +33,53 @@ $(function () {
 
     function createButtons() {
         $(".characterButtonsDump").empty();
-        for(var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
-            var characterButtonEl = $("<button>").attr("value",characterSearchHistory[buttonCount]).text(characterSearchHistory[buttonCount]);
-            characterButtonEl.attr("class","characterButton");
+        for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
+            var characterButtonEl = $("<button>").attr("value", characterSearchHistory[buttonCount]).text(characterSearchHistory[buttonCount]);
+            characterButtonEl.attr("class", "characterButton");
             $(".characterButtonsDump").append(characterButtonEl);
         }
     }
 
     $(".characterButton").on("click", function () {
         searchComicCharacter($(this).val());
+
+
+        
     })
-});
 
 
 
-$function() {
+
+
     //giphy API
     var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
-qIsSesrchResult = 
-limit = 25;
-offSet = 0&;
-rating = "pg-13";
 
-var giphyQueryURL = "https://api.giphy.com/v1/" + qIsSesrchResult + apiGiphyKey + "&q="   "&"+ "limit=" +limit+ & +"offset=" + offSet + "rating=" + rating +"&lang=en"
-gifs/search?api_key=
+    var searchResult = "wolverine";
+
+    var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + searchResult + "&limit=25&offset=&rating=g&lang=en";
 
 
 
+    //console.log(giphyQueryURL);
+    $.ajax({
+        url: giphyQueryURL,
+        method: "GET",
+    }).then(function (data) {
+       // $(".giphyDump").text(JSON.stringify(data, null, 4));
+        console.log(giphyQueryURL);
+        
+        var giphy = data.data[0].images.original.url;
+       $("#giphy1").attr("src", giphy)
 
-console.log(marvelQueryURL);
-$.ajax({
-    url: giphyQueryURL,
-    method: "GET",
-}).then(function (data) {
-    $(".giphyDump").text(JSON.stringify(data,null,4));
-})
+
+       
+       
+
+        $("#giphy1").append(giphy)
+    })
 
 
-    
+
 
     // $.ajax({
     //     url: "https://cors-anywhere.herokuapp.com/https://marvel.com/universe/Magneto_(Max_Eisenhardt)?utm_campaign=apiRef&utm_source=97a93e9e494106d892973948f5b253d9",
