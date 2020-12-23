@@ -4,9 +4,10 @@ $(function () {
     var timeStamp = "1";
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
+    var lastSearchedCharacter;
 
 
-    createButtons();
+    init();
 
     function searchComicCharacter(searchResult) {
         var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=" + timeStamp + "&apikey=" + apiMarvelKey + "&hash=" + hash;
@@ -22,11 +23,23 @@ $(function () {
             var imageLink = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
             $("#heroPic").attr("src", imageLink)
             if (!characterSearchHistory.includes(data.data.results[0].name)) {
-                characterSearchHistory.push(data.data.results[0].name);
+                characterSearchHistory.unshift(data.data.results[0].name);
                 createButtons();
+                localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
             }
             console.log(characterSearchHistory);
+            //Records the last searched character and stores to local storage
+            localStorage.setItem("lastSearched", data.data.results[0].name);
         })
+    }
+
+    function init() {
+        var storedButtons = JSON.parse(localStorage.getItem("buttons"));
+        if (storedButtons !== null) {
+            characterSearchHistory = storedButtons;
+        }
+        createButtons();
+        searchComicCharacter(localStorage.getItem("lastSearched"));
     }
 
     //Creates the character buttons
@@ -47,7 +60,7 @@ $(function () {
         event.preventDefault();
         searchComicCharacter($(".searchInput").val());
         $(".searchInput").val("");
-        
+
     })
 
 
