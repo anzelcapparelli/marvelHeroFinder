@@ -4,8 +4,6 @@ $(function () {
     var timeStamp = "1";
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
-    var lastSearchedCharacter;
-
 
     init();
 
@@ -52,11 +50,8 @@ $(function () {
         }
     }
 
-    $(".characterButton").on("click", function () {
+    $(".searchHistory").on("click", ".characterButton", function () {
         searchComicCharacter($(this).val());
-
-
-        
     })
 
 
