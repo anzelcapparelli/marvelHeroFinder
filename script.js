@@ -34,7 +34,7 @@ $(function () {
         $(".searchHistory").empty();
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
             var characterButtonEl = $("<button>").attr("value", characterSearchHistory[buttonCount]).text(characterSearchHistory[buttonCount]);
-            characterButtonEl.attr("class", "characterButton");
+            characterButtonEl.attr("class", "characterButton button is-warning");
             $(".searchHistory").append(characterButtonEl);
         }
     }

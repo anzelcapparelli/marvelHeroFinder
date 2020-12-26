@@ -1,6 +1,9 @@
 .searchHistory button{
     display: block;
     justify-content: center;
+    min-width: 75%;
+    margin: 0.5em;
+    border-radius: 32px 0px;
 }
 
 img{
