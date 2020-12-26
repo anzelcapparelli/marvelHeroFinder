@@ -4,9 +4,10 @@ $(function () {
     var timeStamp = "1";
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
+    var lastSearchedCharacter;
+    var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
 
-
-    createButtons();
+    init();
 
     function searchComicCharacter(searchResult) {
         var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=" + timeStamp + "&apikey=" + apiMarvelKey + "&hash=" + hash;
@@ -20,13 +21,25 @@ $(function () {
             var wikiaLink = data.data.results[0].urls[1].url;
             $("#wikiaLink").attr("href", wikiaLink).text("Wikia Link");
             var imageLink = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
-            $("#heroPic").attr("src", imageLink)
+            $("#heroPic").attr("src", imageLink).attr("class", "characterProfileImage")
             if (!characterSearchHistory.includes(data.data.results[0].name)) {
-                characterSearchHistory.push(data.data.results[0].name);
+                characterSearchHistory.unshift(data.data.results[0].name);
                 createButtons();
+                localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
             }
             console.log(characterSearchHistory);
+            //Records the last searched character and stores to local storage
+            localStorage.setItem("lastSearched", data.data.results[0].name);
         })
+    }
+
+    function init() {
+        var storedButtons = JSON.parse(localStorage.getItem("buttons"));
+        if (storedButtons !== null) {
+            characterSearchHistory = storedButtons;
+        }
+        createButtons();
+        searchComicCharacter(localStorage.getItem("lastSearched"));
     }
 
     //Creates the character buttons
@@ -39,36 +52,33 @@ $(function () {
         }
     }
 
-    $(".characterButton").on("click", function () {
+    $(".searchHistory").on("click", ".characterButton", function () {
         searchComicCharacter($(this).val());
+        giphyF($(this).val());
     })
 
     $(".searchBar").on("submit", function (event) {
         event.preventDefault();
         searchComicCharacter($(".searchInput").val());
         $(".searchInput").val("");
-        
+        giphyF($(".searchInput").val());
     })
 
+    function giphyF(searchResult) {
+        //giphy API
+        var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + searchResult + "&limit=25&offset=&rating=g&lang=en";
+        //console.log(giphyQueryURL);
+        $.ajax({
+            url: giphyQueryURL,
+            method: "GET",
+        }).then(function (data) {
+            // $(".giphyDump").text(JSON.stringify(data, null, 4));
+            console.log(giphyQueryURL);
 
-
-
-    //giphy API
-    // var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
-
-    // var giphyQueryURL = "https://api.giphy.com/v1/" + qIsSesrchResult + apiGiphyKey + "&q="   "&" + "limit=" + limit + & +"offset=" + offSet + "rating=" + rating + "&lang=en"
-    // gifs / search ? api_key =
-
-
-
-
-    //     console.log(marvelQueryURL);
-    // $.ajax({
-    //     url: giphyQueryURL,
-    //     method: "GET",
-    // }).then(function (data) {
-    //     $(".giphyDump").text(JSON.stringify(data, null, 4));
-    // })
+            var giphy = data.data[0].images.original.url;
+            $("#giphy1").attr("src", giphy);
+        })
+    }
 
 
 
