@@ -13,7 +13,7 @@
   <div class="wrapper">
     <section class="hero is-danger">
       <div class="hero-body">
-        <div class="container is-justify-content-center">
+        <div class="container">
           <h1 class="title">Marvel HeroFinder</h1>
           <!-- <h2 class="subtitle">
                 Primary subtitle
@@ -26,45 +26,32 @@
       <!-- find way to center buttons! Make card reach bottom of floor!-->
       <div class="column is-one-fifth" id="searchHistory">
         <div class="card p-3 searchHistory">
-          <!-- <button class="characterButton">Button</button>
-          <br />
-          <button class="characterButton">Button</button>
-          <br />
-          <button class="characterButton">Button</button>
-          <br /> -->
+<!-- buttons are placed here -->
         </div>
       </div>
 
       <!-- end of left column (search history button section) -->
 
       <div class="column">
-        <!-- <div class="columns searchBar">
-          <div class="column is-two-thirds">
-            <div class="field is-grouped">
-              <div class="control is-expanded">
-                <input class="input" type="text" placeholder="Spider-Man..."/>
-              </div>
-              <div class="control">
-                <button type="submit" class="button is-primary">Submit</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
 
-        <div class="field has-addons has-addons-centered ">
+        <div class="field has-addons ">
           <form class="column is-two-thirds field is-grouped searchBar">
             <p class="control is-expanded">
               <input class="input searchInput" type="text" placeholder="Spider-Man">
             </p>
             <p class="control">
-              <button type="submit" class="button is-warning">Submit</button>
+              <button type="submit" class="button is-warning">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </button>
             </p>
           </form>
         </div>
         <!-- end of column nesting -->
 
 
-        <div class="mr-6" id="mainContent">
+        <div class="mr-6" id="mainContent">       <!--maybe adjust margins in -->
           <div class="clearfix" id="marvelAPI">
             <img src="https://bulma.io/images/placeholders/128x128.png" class="m-3" id="heroPic" />
             <h2 id="characterName">Name</h2>
@@ -111,7 +98,7 @@
 
   <!-- figure out way to space evenly! Attach action shots to bottom of page!-->
   <div id="GIPHY" class="footerEl">
-    <div class="columns clearfix">
+    <div class="columns">
       <div class="column is-offset-one-fifth">
         <h3><strong>Action Shots<strong></h3>
       </div>

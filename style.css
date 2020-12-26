@@ -14,6 +14,9 @@ img{
 #GIPHY img{
     margin: auto;
 }
+#GIPHY h3{
+    margin: 12px;
+}
 
 .clearfix::after {
     content: "";
