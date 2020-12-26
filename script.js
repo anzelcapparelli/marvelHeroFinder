@@ -21,7 +21,7 @@ $(function () {
             var wikiaLink = data.data.results[0].urls[1].url;
             $("#wikiaLink").attr("href", wikiaLink).text("Wikia Link");
             var imageLink = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
-            $("#heroPic").attr("src", imageLink)
+            $("#heroPic").attr("src", imageLink).attr("class", "characterProfileImage")
             if (!characterSearchHistory.includes(data.data.results[0].name)) {
                 characterSearchHistory.unshift(data.data.results[0].name);
                 createButtons();
@@ -55,25 +55,18 @@ $(function () {
     $(".searchHistory").on("click", ".characterButton", function () {
         searchComicCharacter($(this).val());
         giphyF($(this).val());
-
-
     })
 
     $(".searchBar").on("submit", function (event) {
         event.preventDefault();
         searchComicCharacter($(".searchInput").val());
         $(".searchInput").val("");
-
+        giphyF($(".searchInput").val());
     })
 
     function giphyF(searchResult) {
         //giphy API
-
-
         var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + searchResult + "&limit=25&offset=&rating=g&lang=en";
-
-
-
         //console.log(giphyQueryURL);
         $.ajax({
             url: giphyQueryURL,
@@ -83,17 +76,8 @@ $(function () {
             console.log(giphyQueryURL);
 
             var giphy = data.data[0].images.original.url;
-            $("#giphy1").attr("src", giphy)
-
-
-
-
+            $("#giphy1").attr("src", giphy);
         })
-
-
-
-
-
     }
 
 
