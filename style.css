@@ -1,6 +1,9 @@
 .searchHistory button{
     display: block;
     justify-content: center;
+    min-width: 75%;
+    margin: 0.5em;
+    border-radius: 32px 0px;
 }
 
 img{
@@ -10,6 +13,9 @@ img{
 
 #GIPHY img{
     margin: auto;
+}
+#GIPHY h3{
+    margin: 12px;
 }
 
 .clearfix::after {
@@ -44,5 +50,9 @@ img{
       margin:0%;
   }
  
+  #GIPHY{
+      margin-left: auto;
+      margin-right: auto;
+  }
   
 
