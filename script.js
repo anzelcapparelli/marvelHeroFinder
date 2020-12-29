@@ -27,7 +27,6 @@ $(function () {
                 createButtons();
                 localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
             }
-            console.log(characterSearchHistory);
             //Records the last searched character and stores to local storage
             localStorage.setItem("lastSearched", data.data.results[0].name);
         })
@@ -48,9 +47,24 @@ $(function () {
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
             var characterButtonEl = $("<button>").attr("value", characterSearchHistory[buttonCount]).text(characterSearchHistory[buttonCount]);
             characterButtonEl.attr("class", "characterButton button is-warning");
-            $(".searchHistory").append(characterButtonEl);
+            var deleteButtonEl = $("<button>").attr("value",characterSearchHistory[buttonCount]).attr("class", "deleteButton button is-danger is-outlined");
+            var spanEl = $("<span>").attr("class","icon is-small");
+            var iconEl = $("<i>").attr("class","fas fa-times");
+            var buttonContainer = $("<div>").attr("class","field is-grouped");
+            buttonContainer.append(characterButtonEl);
+            buttonContainer.append(deleteButtonEl);
+            spanEl.append(iconEl);
+            deleteButtonEl.append(spanEl);
+            $(".searchHistory").append(buttonContainer);
         }
     }
+
+    //Delete button for character buttons - ERIC
+    $(".searchHistory").on("click", ".deleteButton", function () {
+        characterSearchHistory.splice(characterSearchHistory.indexOf($(this).val()),1)
+        createButtons();
+        localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
+    })
 
     $(".searchHistory").on("click", ".characterButton", function () {
         searchComicCharacter($(this).val());
