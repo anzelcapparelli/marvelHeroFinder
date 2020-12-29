@@ -1,16 +1,14 @@
 $(function () {
     //Marvel API
     var apiMarvelKey = "97a93e9e494106d892973948f5b253d9";
-    var timeStamp = "1";
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
-    var lastSearchedCharacter;
     var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
 
     init();
 
     function searchComicCharacter(searchResult) {
-        var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=" + timeStamp + "&apikey=" + apiMarvelKey + "&hash=" + hash;
+        var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=1&apikey=" + apiMarvelKey + "&hash=" + hash;
         // https://gateway.marvel.com/v1/public/characters?name=cyclops&ts=1&apikey=97a93e9e494106d892973948f5b253d9&hash=c32debe50244fc7a722036892da77e19
         $.ajax({
             url: marvelQueryURL,
@@ -27,7 +25,6 @@ $(function () {
                 createButtons();
                 localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
             }
-            console.log(characterSearchHistory);
             //Records the last searched character and stores to local storage
             localStorage.setItem("lastSearched", data.data.results[0].name);
         })
@@ -48,9 +45,24 @@ $(function () {
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
             var characterButtonEl = $("<button>").attr("value", characterSearchHistory[buttonCount]).text(characterSearchHistory[buttonCount]);
             characterButtonEl.attr("class", "characterButton button is-warning");
-            $(".searchHistory").append(characterButtonEl);
+            var deleteButtonEl = $("<button>").attr("value",characterSearchHistory[buttonCount]).attr("class", "deleteButton button is-danger is-outlined");
+            var spanEl = $("<span>").attr("class","icon is-small");
+            var iconEl = $("<i>").attr("class","fas fa-times");
+            var buttonContainer = $("<div>").attr("class","field is-grouped");
+            buttonContainer.append(characterButtonEl);
+            buttonContainer.append(deleteButtonEl);
+            spanEl.append(iconEl);
+            deleteButtonEl.append(spanEl);
+            $(".searchHistory").append(buttonContainer);
         }
     }
+
+    //Delete button for character buttons - ERIC
+    $(".searchHistory").on("click", ".deleteButton", function () {
+        characterSearchHistory.splice(characterSearchHistory.indexOf($(this).val()),1)
+        createButtons();
+        localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
+    })
 
     $(".searchHistory").on("click", ".characterButton", function () {
         searchComicCharacter($(this).val());
