@@ -1,16 +1,14 @@
 $(function () {
     //Marvel API
     var apiMarvelKey = "97a93e9e494106d892973948f5b253d9";
-    var timeStamp = "1";
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
-    var lastSearchedCharacter;
     var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
 
     init();
 
     function searchComicCharacter(searchResult) {
-        var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=" + timeStamp + "&apikey=" + apiMarvelKey + "&hash=" + hash;
+        var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=1&apikey=" + apiMarvelKey + "&hash=" + hash;
         // https://gateway.marvel.com/v1/public/characters?name=cyclops&ts=1&apikey=97a93e9e494106d892973948f5b253d9&hash=c32debe50244fc7a722036892da77e19
         $.ajax({
             url: marvelQueryURL,
