@@ -26,7 +26,7 @@
       <!-- find way to center buttons! Make card reach bottom of floor!-->
       <div class="column is-one-fifth" id="searchHistory">
         <div class="card p-3 searchHistory is-align-content-stretch">
-<!-- buttons are placed here -->
+          <!-- buttons are placed here -->
         </div>
       </div>
 
@@ -34,7 +34,8 @@
 
       <div class="column">
 
-        <div class="field has-addons ">
+        <!-- Search Bar. We are currently using drop-down list instead -->
+        <!-- <div class="field has-addons ">
           <form class="column is-two-thirds field is-grouped searchBar">
             <p class="control is-expanded">
               <input class="input searchInput" type="text" placeholder="Spider-Man">
@@ -47,11 +48,33 @@
               </button>
             </p>
           </form>
+        </div> -->
+
+
+        <div class="field has-addons">
+          <form class="column is-two-thirds field is-grouped searchDropdownBar">
+            <div class="control is-expanded">
+              <div class="select is-fullwidth">
+                <select class="characterSelect">
+                </select>
+              </div>
+            </div>
+            <div class="control">
+              <button type="submit" class="button is-warning">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </button>
+            </div>
+          </form>
         </div>
+
+
         <!-- end of column nesting -->
 
 
-        <div class="mr-6" id="mainContent">       <!--maybe adjust margins in -->
+        <div class="mr-6" id="mainContent">
+          <!--maybe adjust margins in -->
           <div class="clearfix" id="marvelAPI">
             <img src="https://bulma.io/images/placeholders/128x128.png" class="m-3" id="heroPic" />
             <h2 id="characterName">Name</h2>
@@ -111,7 +134,7 @@
 
         <img src="https://bulma.io/images/placeholders/128x128.png" width="128" height="128" class="m-3" id="giphy2" />
 
-        <img src="https://bulma.io/images/placeholders/128x128.png" width="128" height="128" class="m-3" id="giphy3"/>
+        <img src="https://bulma.io/images/placeholders/128x128.png" width="128" height="128" class="m-3" id="giphy3" />
 
         <img src="https://bulma.io/images/placeholders/128x128.png" width="128" height="128" class="m-3" id="giphy4" />
 
@@ -128,9 +151,9 @@
         <img src="https://bulma.io/images/placeholders/128x128.png" width="128" height="128" class="m-3" id="giphy10" />
       </div>
 
-        
-      </div>
+
     </div>
+  </div>
 
   <!-- end of GIPHY section -->
 

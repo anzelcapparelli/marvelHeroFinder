@@ -4,8 +4,24 @@ $(function () {
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
     var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
+    var characterList = ["Thor", "Spider-Man", "Deadpool", "Iron Man", "Hulk", "Wolverine", "Captain America", "Doctor Strange", "Black Panther", "Groot",
+        "Scarlet Witch", "Rocket Raccoon", "Black Widow", "Punisher", "Silver Surfer", "Vision", "Hawkeye", "Gambit", "Jean Grey", "Nightcrawler",
+        "Professor X", "Winter Soldier", "Cable", "Colossus", "Drax", "Odin", "Gamora", "Thing", "Blade", "Human Torch", "Nova"];
 
     init();
+
+    $(".searchDropdownBar").on("submit", function (event) {
+        event.preventDefault();
+        searchComicCharacter($(".characterSelect").val());
+        giphyF($(".characterSelect").val());
+    })
+
+    function createSearchOptions() {
+        for (var characterCount = 0; characterCount < characterList.length; characterCount++) {
+            var characterOption = $("<option>").val(characterList[characterCount]).text(characterList[characterCount]);
+            $(".characterSelect").append(characterOption);
+        }
+    }
 
     function searchComicCharacter(searchResult) {
         var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=1&apikey=" + apiMarvelKey + "&hash=" + hash;
@@ -37,6 +53,8 @@ $(function () {
         }
         createButtons();
         searchComicCharacter(localStorage.getItem("lastSearched"));
+        //
+        createSearchOptions();
     }
 
     //Creates the character buttons
@@ -45,10 +63,10 @@ $(function () {
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
             var characterButtonEl = $("<button>").attr("value", characterSearchHistory[buttonCount]).text(characterSearchHistory[buttonCount]);
             characterButtonEl.attr("class", "characterButton button is-warning");
-            var deleteButtonEl = $("<button>").attr("value",characterSearchHistory[buttonCount]).attr("class", "deleteButton button is-danger is-outlined");
-            var spanEl = $("<span>").attr("class","icon is-small");
-            var iconEl = $("<i>").attr("class","fas fa-times");
-            var buttonContainer = $("<div>").attr("class","field is-grouped");
+            var deleteButtonEl = $("<button>").attr("value", characterSearchHistory[buttonCount]).attr("class", "deleteButton button is-danger is-outlined");
+            var spanEl = $("<span>").attr("class", "icon is-small");
+            var iconEl = $("<i>").attr("class", "fas fa-times");
+            var buttonContainer = $("<div>").attr("class", "field is-grouped");
             buttonContainer.append(characterButtonEl);
             buttonContainer.append(deleteButtonEl);
             spanEl.append(iconEl);
@@ -59,7 +77,7 @@ $(function () {
 
     //Delete button for character buttons - ERIC
     $(".searchHistory").on("click", ".deleteButton", function () {
-        characterSearchHistory.splice(characterSearchHistory.indexOf($(this).val()),1)
+        characterSearchHistory.splice(characterSearchHistory.indexOf($(this).val()), 1)
         createButtons();
         localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
     })
@@ -69,12 +87,13 @@ $(function () {
         giphyF($(this).val());
     })
 
-    $(".searchBar").on("submit", function (event) {
-        event.preventDefault();
-        searchComicCharacter($(".searchInput").val());
-        $(".searchInput").val("");
-        giphyF($(".searchInput").val());
-    })
+    //Search Bar
+    // $(".searchBar").on("submit", function (event) {
+    //     event.preventDefault();
+    //     searchComicCharacter($(".searchInput").val());
+    //     $(".searchInput").val("");
+    //     giphyF($(".searchInput").val());
+    // })
 
     function giphyF(searchResult) {
         //giphy API
@@ -87,29 +106,29 @@ $(function () {
             // $(".giphyDump").text(JSON.stringify(data, null, 4));
             console.log(giphyQueryURL);
             //for (i = 0; i < 10; i++) {
-                var giphy = data.data[0].images.original.url;
-                var giphya = data.data[1].images.original.url;
-                var giphyb = data.data[2].images.original.url;
-                var giphyc = data.data[3].images.original.url;
-                var giphyd = data.data[4].images.original.url;
-                var giphye = data.data[5].images.original.url;
-                var giphyf= data.data[6].images.original.url;
-                var giphyg = data.data[7].images.original.url;
-                var giphyh = data.data[8].images.original.url;
-                var giphyi = data.data[9].images.original.url;
-                $("#giphy1").attr("src", giphy)
-                $("#giphy2").attr("src", giphya)
-                $("#giphy3").attr("src", giphyb)
-                $("#giphy4").attr("src", giphyc)
-                $("#giphy5").attr("src", giphyd)
-                $("#giphy6").attr("src", giphye)
-                $("#giphy7").attr("src", giphyf)
-                $("#giphy8").attr("src", giphyg)
-                $("#giphy9").attr("src", giphyh)
-                $("#giphy10").attr("src", giphyi)
+            var giphy = data.data[0].images.original.url;
+            var giphya = data.data[1].images.original.url;
+            var giphyb = data.data[2].images.original.url;
+            var giphyc = data.data[3].images.original.url;
+            var giphyd = data.data[4].images.original.url;
+            var giphye = data.data[5].images.original.url;
+            var giphyf = data.data[6].images.original.url;
+            var giphyg = data.data[7].images.original.url;
+            var giphyh = data.data[8].images.original.url;
+            var giphyi = data.data[9].images.original.url;
+            $("#giphy1").attr("src", giphy)
+            $("#giphy2").attr("src", giphya)
+            $("#giphy3").attr("src", giphyb)
+            $("#giphy4").attr("src", giphyc)
+            $("#giphy5").attr("src", giphyd)
+            $("#giphy6").attr("src", giphye)
+            $("#giphy7").attr("src", giphyf)
+            $("#giphy8").attr("src", giphyg)
+            $("#giphy9").attr("src", giphyh)
+            $("#giphy10").attr("src", giphyi)
 
 
-           // }
+            // }
 
         })
     }
