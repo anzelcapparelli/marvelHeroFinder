@@ -106,16 +106,48 @@ $(function () {
             // $(".giphyDump").text(JSON.stringify(data, null, 4));
             console.log(giphyQueryURL);
             //for (i = 0; i < 10; i++) {
-            var giphy = data.data[0].images.original.url;
-            var giphya = data.data[1].images.original.url;
-            var giphyb = data.data[2].images.original.url;
-            var giphyc = data.data[3].images.original.url;
-            var giphyd = data.data[4].images.original.url;
-            var giphye = data.data[5].images.original.url;
-            var giphyf = data.data[6].images.original.url;
-            var giphyg = data.data[7].images.original.url;
-            var giphyh = data.data[8].images.original.url;
-            var giphyi = data.data[9].images.original.url;
+
+            var acceptedGIFs = [];
+
+            for (var i = 0; i < data.pagination.count; i++) {
+                var GIFtitle = data.data[i].title.toLowerCase();
+                console.log(GIFtitle);
+                if (acceptedGIFs.length < 10) {
+                    if (GIFtitle.indexOf(searchResult.toLowerCase()) !== -1) {
+                        //append to page
+                        acceptedGIFs.push(data.data[i].images.original.url);
+                        // store good matches; push Array
+
+                    }
+                }
+
+
+            }
+            // stops at end of array; want to offset, and repeat parse until we get 10!
+
+            console.log(acceptedGIFs);
+
+            var giphy = acceptedGIFs[0];
+            var giphya = acceptedGIFs[1];
+            var giphyb = acceptedGIFs[2];
+            var giphyc = acceptedGIFs[3];
+            var giphyd = acceptedGIFs[4];
+            var giphye = acceptedGIFs[5];
+            var giphyf = acceptedGIFs[6];
+            var giphyg = acceptedGIFs[7];
+            var giphyh = acceptedGIFs[8];
+            var giphyi = acceptedGIFs[9];
+
+            // var giphy = data.data[0].images.original.url;
+            // var giphya = data.data[1].images.original.url;
+            // var giphyb = data.data[2].images.original.url;
+            // var giphyc = data.data[3].images.original.url;
+            // var giphyd = data.data[4].images.original.url;
+            // var giphye = data.data[5].images.original.url;
+            // var giphyf = data.data[6].images.original.url;
+            // var giphyg = data.data[7].images.original.url;
+            // var giphyh = data.data[8].images.original.url;
+            // var giphyi = data.data[9].images.original.url;
             $("#giphy1").attr("src", giphy)
             $("#giphy2").attr("src", giphya)
             $("#giphy3").attr("src", giphyb)
@@ -132,11 +164,6 @@ $(function () {
 
             // }
 
-            for (var i = 0; i < data.pagination.count; i++) {
-                var GIFtitle = data.data[i].title.toLowerCase();
-                console.log(GIFtitle);
-            
-            }
         })
     }
 
