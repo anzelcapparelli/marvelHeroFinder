@@ -127,9 +127,16 @@ $(function () {
             $("#giphy9").attr("src", giphyh)
             $("#giphy10").attr("src", giphyi)
 
+            // ^^^ creating anew would be more DRY than this! Would be good for the 'for' loop! (maybe empty/remove placeholders)
+            // would have to empty each time if creating new (not reassigning)
 
             // }
 
+            for (var i = 0; i < data.pagination.count; i++) {
+                var GIFtitle = data.data[i].title.toLowerCase();
+                console.log(GIFtitle);
+            
+            }
         })
     }
 
