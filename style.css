@@ -1,68 +1,82 @@
-.characterButton{
-    display: block;
-    justify-content: center;
-    min-width: 75%;
-    margin: 0.5em;
-    border-radius: 32px 0px;
+.characterButton {
+  display: block;
+  justify-content: center;
+  min-width: 75%;
+  margin: 0.5em;
+  border-radius: 32px 0px;
 }
 /* Delete button for character buttons */
-.deleteButton{
-    margin: auto;
-    border-radius: 8px 8px;
+.deleteButton {
+  margin: auto;
+  border-radius: 8px 8px;
 }
 
-/* img{
-    float: left;
-
-} */
-
-#GIPHY img{
-    margin: auto;
+.GIFspot img {
+  width: 128px;
+  /* height: 128px; */
+  /* margin: auto; */
 }
-#GIPHY h3{
-    margin: 12px;
+
+#GIPHY img {
+  margin: auto;
+}
+#GIPHY h3 {
+  margin: 12px;
 }
 
 .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
+  content: "";
+  clear: both;
+  display: table;
+}
 
 /* styling for sticky footer */
 
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
-  .wrapper {
-    min-height: 100%;
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%;
 
-    margin-bottom: -310px;
-  }
-  .footerEl,
-  .push {
-    height: 310px;
-    padding: 0%;
-  }
+  margin-bottom: -310px;
+}
+.footerEl,
+.push {
+  height: 310px;
+  padding: 0%;
+}
 
-  .footerEl .column{
-      padding:0%;
-  }
- 
-  .footerEl img{
-      margin:0%;
-  }
- 
-  #GIPHY{
-      margin-left: auto;
-      margin-right: auto;
-  }
-  
-  #GIPHY .is-flex-wrap-wrap{
-max-width: 800px;
-  }
-  /* ^^^ affects how many GIFs can be seen on a single line (adjust max if going for bigger GIFs than placeholder for 5 per row */
-  
+.footerEl .column {
+  padding: 0%;
+}
 
+.footerEl img {
+  margin: 0%;
+}
+
+#GIPHY {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#GIPHY .is-flex-wrap-wrap,
+.searchDropdownBar {
+  max-width: 800px;
+}
+/* ^^^ affects how many GIFs can be seen on a single line (adjust max if going for bigger GIFs than placeholder for 5 per row */
+/* matching  */
+
+#searchHistory {
+  max-width: 600px;
+  display: table;
+}
+
+#heroPic {
+  width: 25%;
+  height: auto;
+}
+/* ^^^ scales the hero image (can adjust!) 
+make so that if breakpoint, make full width!
+*/
