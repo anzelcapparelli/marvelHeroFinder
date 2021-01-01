@@ -18,6 +18,8 @@
 
 #GIPHY img {
   margin: auto;
+  width: 128px;
+  height: 128px;
 }
 #GIPHY h3 {
   margin: 12px;
@@ -35,6 +37,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+    
 }
 .wrapper {
   min-height: 100%;
@@ -80,3 +83,6 @@ body {
 /* ^^^ scales the hero image (can adjust!) 
 make so that if breakpoint, make full width!
 */
+
+
+}

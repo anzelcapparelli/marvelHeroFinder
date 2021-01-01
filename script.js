@@ -97,7 +97,7 @@ $(function () {
 
     function giphyF(searchResult) {
         //giphy API
-        var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + searchResult + "&limit=25&offset=&rating=g&lang=en";
+        var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + "marvel" + searchResult + "&limit=25&offset=&rating=g&lang=en";
         //console.log(giphyQueryURL);
         $.ajax({
             url: giphyQueryURL,
