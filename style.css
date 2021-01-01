@@ -11,10 +11,11 @@
   border-radius: 8px 8px;
 }
 
-/* img{
-    float: left;
-
-} */
+.GIFspot img {
+  width: 128px;
+  /* height: 128px; */
+  /* margin: auto; */
+}
 
 #GIPHY img {
   margin: auto;
@@ -34,13 +35,18 @@
 /* styling for sticky footer */
 
 html{
+  /* adds a background photo with opacity */
   background: url(MarvelHeroes2.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-blend-mode: lighten;
+  /* to change opacity without creating a div adding pseudos*/
+ background-color: rgb(155, 146, 146, .5);
+
 }
+
 body {
   height: 100%;
   margin: 0;
@@ -79,8 +85,9 @@ body {
 #searchHistory {
   max-width: 600px;
   display: table;
+  background-color: black;
+  
 }
-
 
 #heroPic {
   width: 25%;
@@ -89,6 +96,12 @@ body {
 /* ^^^ scales the hero image (can adjust!) 
 make so that if breakpoint, make full width!
 */
-
-
-}
+/* To see how the biography text would look inside of a card*/
+#characterDescription{
+  color: rgb(2, 8, 0);
+  background-color: white;
+  padding: 10px;
+  border: solid;
+  border-color: black;
+  border-width: 5px;
+}*/

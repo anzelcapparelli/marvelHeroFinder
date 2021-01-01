@@ -7,12 +7,16 @@ $(function () {
     var characterList = ["Thor", "Spider-Man", "Deadpool", "Iron Man", "Hulk", "Wolverine", "Captain America", "Doctor Strange", "Black Panther", "Groot",
         "Scarlet Witch", "Rocket Raccoon", "Black Widow", "Punisher", "Silver Surfer", "Vision", "Hawkeye", "Gambit", "Jean Grey", "Nightcrawler",
         "Professor X", "Winter Soldier", "Cable", "Colossus", "Drax", "Odin", "Gamora", "Thing", "Blade", "Human Torch", "Nova"];
+    var offsetNum;
+    // var acceptedGIFs = [];
 
     init();
 
     $(".searchDropdownBar").on("submit", function (event) {
         event.preventDefault();
         searchComicCharacter($(".characterSelect").val());
+        offsetNum = 0;
+        acceptedGIFs = [];
         giphyF($(".characterSelect").val());
     })
 
@@ -53,7 +57,7 @@ $(function () {
         }
         createButtons();
         searchComicCharacter(localStorage.getItem("lastSearched"));
-        //
+        // ^^^ if we do marvel-specific placehoder, might want to remove above line!
         createSearchOptions();
     }
 
@@ -84,6 +88,8 @@ $(function () {
 
     $(".searchHistory").on("click", ".characterButton", function () {
         searchComicCharacter($(this).val());
+        offsetNum = 0;
+        acceptedGIFs = [];
         giphyF($(this).val());
     })
 
@@ -97,41 +103,94 @@ $(function () {
 
     function giphyF(searchResult) {
         //giphy API
-        var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=" + "marvel" + searchResult + "&limit=25&offset=&rating=g&lang=en";
-        //console.log(giphyQueryURL);
+        var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=marvel " + searchResult + "&limit=25&offset=" + offsetNum + "&rating=g&lang=en";
+        $(".GIFspot").empty();
+
         $.ajax({
             url: giphyQueryURL,
             method: "GET",
         }).then(function (data) {
-            // $(".giphyDump").text(JSON.stringify(data, null, 4));
-            console.log(giphyQueryURL);
-            //for (i = 0; i < 10; i++) {
-            var giphy = data.data[0].images.original.url;
-            var giphya = data.data[1].images.original.url;
-            var giphyb = data.data[2].images.original.url;
-            var giphyc = data.data[3].images.original.url;
-            var giphyd = data.data[4].images.original.url;
-            var giphye = data.data[5].images.original.url;
-            var giphyf = data.data[6].images.original.url;
-            var giphyg = data.data[7].images.original.url;
-            var giphyh = data.data[8].images.original.url;
-            var giphyi = data.data[9].images.original.url;
-            $("#giphy1").attr("src", giphy)
-            $("#giphy2").attr("src", giphya)
-            $("#giphy3").attr("src", giphyb)
-            $("#giphy4").attr("src", giphyc)
-            $("#giphy5").attr("src", giphyd)
-            $("#giphy6").attr("src", giphye)
-            $("#giphy7").attr("src", giphyf)
-            $("#giphy8").attr("src", giphyg)
-            $("#giphy9").attr("src", giphyh)
-            $("#giphy10").attr("src", giphyi)
+
+            // filter system that looks at the GIF title to verify that the GIF is relevant to the superhero
+
+            for (var i = 0; i < data.pagination.count; i++) {
+                var GIFtitle = data.data[i].title.toLowerCase();
+                console.log(GIFtitle);
+
+                if (acceptedGIFs.length < 10) {
+
+                    if (GIFtitle.indexOf(searchResult.toLowerCase()) !== -1 && GIFtitle.indexOf((searchResult + "s").toLowerCase()) === -1) {
+                        //makes sure that the superhero is in the title; makes sure that hero name is not actually referring to sports team
+                        acceptedGIFs.push(data.data[i].images.original.url);
+                    }
+                }
+            }
+            // gets all GIFs from search with superhero in the title
 
 
-            // }
+
+            console.log(acceptedGIFs);
+            //accepted gifs no longer getting into array! b/c not getting to 10 GIFs! ==> dont think loop is working? Brute it first...
+            // want it to stop when it stops getting GIFs (b/c SOMETHING IS STOPPING IT)    or it's not looping even once ==> no print (not enough)
+
+            if (acceptedGIFs.length >= 10 || offsetNum >= 125) {
+
+                for (var i = 0; i < acceptedGIFs.length; i++) {
+                    $(".GIFspot").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
+                }
+
+
+                // // ========================================================================================================================
+                // //OLD WAY!
+
+                // // if statement prevenets excessive printing that would be overwritten;
+                // //  also makes it easier to JS create & append GIFs if we take out placeholders
+
+                // var giphy = acceptedGIFs[0];
+                // var giphya = acceptedGIFs[1];
+                // var giphyb = acceptedGIFs[2];
+                // var giphyc = acceptedGIFs[3];
+                // var giphyd = acceptedGIFs[4];
+                // var giphye = acceptedGIFs[5];
+                // var giphyf = acceptedGIFs[6];
+                // var giphyg = acceptedGIFs[7];
+                // var giphyh = acceptedGIFs[8];
+                // var giphyi = acceptedGIFs[9];
+
+                // // var giphy = data.data[0].images.original.url;
+                // // var giphya = data.data[1].images.original.url;
+                // // var giphyb = data.data[2].images.original.url;
+                // // var giphyc = data.data[3].images.original.url;
+                // // var giphyd = data.data[4].images.original.url;
+                // // var giphye = data.data[5].images.original.url;
+                // // var giphyf = data.data[6].images.original.url;
+                // // var giphyg = data.data[7].images.original.url;
+                // // var giphyh = data.data[8].images.original.url;
+                // // var giphyi = data.data[9].images.original.url;
+                // $("#giphy1").attr("src", giphy)
+                // $("#giphy2").attr("src", giphya)
+                // $("#giphy3").attr("src", giphyb)
+                // $("#giphy4").attr("src", giphyc)
+                // $("#giphy5").attr("src", giphyd)
+                // $("#giphy6").attr("src", giphye)
+                // $("#giphy7").attr("src", giphyf)
+                // $("#giphy8").attr("src", giphyg)
+                // $("#giphy9").attr("src", giphyh)
+                // $("#giphy10").attr("src", giphyi)
+                // // ^^^ creating anew would be more DRY than this! Would be good for the 'for' loop! (maybe empty/remove placeholders)
+                // // would have to empty each time if creating new (not reassigning)
+                // // ========================================================================================================================
+            }
+
+            if (acceptedGIFs.length < 10 && offsetNum < 125) {
+                offsetNum += 25;
+                giphyF(searchResult);
+                // sends additional ajax requests if there weren't enough GIFs grabbed; stops after 5 additional searches
+            }
 
         })
     }
+
 
 
 
