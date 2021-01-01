@@ -21,6 +21,8 @@
 
 #GIPHY img {
   margin: auto;
+  width: 128px;
+  height: 128px;
 }
 #GIPHY h3 {
   margin: 12px;
@@ -38,6 +40,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+    
 }
 .wrapper {
   min-height: 100%;
@@ -83,6 +86,7 @@ body {
 make so that if breakpoint, make full width!
 */
 
+
 #characterName {
   font-family: 'Bangers', cursive;
   font-size: 60px;
@@ -101,3 +105,4 @@ make so that if breakpoint, make full width!
   font-family: 'Monoton', cursive;
   font-size: 70px;
 }
+
