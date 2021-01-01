@@ -63,7 +63,6 @@ $(function () {
             tooltips: {
                 enabled: false
             }
-
         }
     };
     var myRadarChart = new Chart(ctx, radarChart);
