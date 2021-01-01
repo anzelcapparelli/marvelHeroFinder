@@ -7,6 +7,8 @@
   <title>Marvel HeroFinder</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
   <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
+  
 </head>
 
 <body>
@@ -78,33 +80,14 @@
           <div class="clearfix" id="marvelAPI">
             <img src="https://bulma.io/images/placeholders/128x128.png" class="m-3" id="heroPic" />
             <h2 id="characterName">Name</h2>
-            <p id="characterDescription">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-              tempore hic laborum tempora, rerum accusantium autem deserunt ex
-              amet eos, esse necessitatibus sit quis obcaecati minus
-              voluptatum quam. Autem mollitia possimus excepturi libero
-              sapiente, maiores aliquam tenetur asperiores explicabo suscipit
-              officiis amet dignissimos consequatur minus commodi accusantium
-              at iste ea quod fuga sint. Explicabo praesentium consequuntur
-              reprehenderit debitis itaque nesciunt cum officia animi facere
-              fuga rem, in ipsam, corporis tempora maxime, hic provident.
-              Incidunt ad nulla, perferendis beatae consequuntur facere qui
-              illum harum aut nisi sapiente sit nihil! Laborum ex, vitae
-              magnam placeat doloremque excepturi cum corporis quam, aliquid
-              sequi consequatur amet minus, explicabo dignissimos! Ipsa
-              placeat, rerum autem consectetur iusto amet deleniti hic.
-              Dignissimos reprehenderit odio sit quas. Ipsam accusamus,
-              reiciendis obcaecati eos nulla, vel iste laboriosam eveniet
-              mollitia voluptates dolore, laborum error minus. Omnis ipsum aut
-              deleniti earum. Molestias facere illum atque. Inventore, rem
-              fugiat quos adipisci possimus repellendus commodi. Laboriosam
-              quo, a itaque tenetur repudiandae molestiae hic amet, natus
-              excepturi reprehenderit odio ab nobis pariatur facere
-              perferendis beatae rerum vitae voluptatem voluptatibus sit
-              blanditiis! Amet saepe veniam provident, iusto nisi sed!
-              Officia, iusto! Nemo eveniet quo reiciendis explicabo nobis
-              tempora. Provident adipisci, magni vero distinctio quam sequi.
-            </p>
+            <!-- Radar chart to show character stats such as power, speed, etc -->
+            <div class="characterStats">
+              <div class="statsTitle">Stats</div>
+              <div class="chartjs-radar">
+                <canvas id="radarChart" width="300" height="300"></canvas>
+              </div>              
+            </div>
+            <p id="characterDescription"> </p>
             <a id="wikiaLink"></a>
           </div>
           <!-- end of Marvel API section -->
@@ -166,7 +149,7 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
   <!-- ^^ script enabling easy icon usage -->
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
   <script src="script.js"></script>
 </body>
 
