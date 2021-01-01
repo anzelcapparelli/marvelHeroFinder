@@ -8,15 +8,24 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
-  
+  <!-- google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bangers&family=Monoton&family=Playfair+Display+SC:wght@700&display=swap"
+    rel="stylesheet">
+
 </head>
 
 <body>
   <div class="wrapper">
-    <section class="hero is-danger">
+    <section class="hero headerPanel">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">Marvel HeroFinder</h1>
+          <h1 class="title">
+            <img
+              src="https://lh3.googleusercontent.com/proxy/3SBVwID37WNRlV80Ialz4niICoPiZmAtlWP1urz-4CSdusz5kfzRaPlPCi7JXY8O5DXvnpkPR5_SBSo-HamgvT2dJLZUeBK_dpoKxNo9lZnXv9E2UtiY82uZiDlO6NMCFy-jV8mI"
+              class="marvelLogoHeader" alt="Marvel Logo">
+            <span class="headerMarvel">HERO-FINDER</span>
+          </h1>
           <!-- <h2 class="subtitle">
                 Primary subtitle
               </h2> -->
@@ -81,14 +90,14 @@
         <div class="mr-6" id="mainContent">
           <!--maybe adjust margins in -->
           <div id="marvelAPI">
-            <img src="https://bulma.io/images/placeholders/128x128.png" class="m-3" id="heroPic" />
             <h2 id="characterName">Name</h2>
+            <img src="https://bulma.io/images/placeholders/128x128.png" class="m-3" id="heroPic" />
             <!-- Radar chart to show character stats such as power, speed, etc -->
             <div class="characterStats">
               <div class="statsTitle">Stats</div>
               <div class="chartjs-radar">
                 <canvas id="radarChart" width="300" height="300"></canvas>
-              </div>              
+              </div>
             </div>
             <p id="characterDescription"> </p>
             <a id="wikiaLink"></a>
