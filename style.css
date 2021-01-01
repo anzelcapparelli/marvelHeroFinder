@@ -4,7 +4,9 @@
   min-width: 75%;
   margin: 0.5em;
   border-radius: 32px 0px;
+  font-family: 'Playfair Display SC', serif;
 }
+
 /* Delete button for character buttons */
 .deleteButton {
   margin: auto;
@@ -105,3 +107,24 @@ make so that if breakpoint, make full width!
   border-color: black;
   border-width: 5px;
 }*/
+
+
+#characterName {
+  font-family: 'Bangers', cursive;
+  font-size: 60px;
+}
+
+.headerPanel {
+  background-color: #ED1D24;
+}
+
+.marvelLogoHeader {
+  margin-bottom: -8px;
+  height: 120px;
+}
+
+.headerMarvel {
+  font-family: 'Monoton', cursive;
+  font-size: 100px;
+}
+

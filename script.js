@@ -1,6 +1,7 @@
 $(function () {
     //Marvel API
     var apiMarvelKey = "97a93e9e494106d892973948f5b253d9";
+    var otherComicAPIKey = "10224034962282884";
     var hash = "c32debe50244fc7a722036892da77e19";
     var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
     var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
@@ -12,12 +13,87 @@ $(function () {
 
     init();
 
+    var intelligenceVal = 0;
+    var strengthVal = 0;
+    var speedVal = 0;
+    var durabilityVal = 0;
+    var powerVal = 0;
+    var combatVal = 0;
+    var ctx = $("#radarChart");
+    var radarChart = {
+        type: "radar",
+        data: {
+            labels: ["Intelligence", "Strength", "Speed", "Durability", "Power", "Combat"],
+            datasets: [{
+                data: [intelligenceVal, strengthVal, speedVal, durabilityVal, powerVal, combatVal],
+                pointBackgroundColor: [
+                    "rgba(199, 75, 246, 0.7)",   //Intelligence
+                    "rgba(248, 113, 46, 0.7)",    //Strength
+                    "rgba(255, 234, 86, 0.7)",    //Speed
+                    "rgba(50, 151, 255, 0.7)",   //Durability
+                    "rgba(222, 33, 16, 0.7)",   //Power
+                    "rgba(84, 202, 149, 0.7)"],  //Combat
+                fill: true,
+                backgroundColor: "rgba(237, 29, 36, 0.3)"
+            }]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: true,
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 5
+                },
+                pointLabels: {
+                    fontColor: [
+                        "rgba(199, 75, 246, 1)",   //Intelligence
+                        "rgba(248, 113, 46, 1)",    //Strength
+                        "rgba(255, 234, 86, 1)",    //Speed
+                        "rgba(50, 151, 255, 1)",   //Durability
+                        "rgba(222, 33, 16, 1)",   //Power
+                        "rgba(84, 202, 149, 1)"   //Combat
+                    ],
+                    fontSize: 15
+                }
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                enabled: false
+            }
+        }
+    };
+    var myRadarChart = new Chart(ctx, radarChart);
+
+    //Creates chart with each character's stats such as intelligence, strength, speed - ERIC
+    function createRadarChart(searchResult) {
+        var marvelQueryURL = "https://www.superheroapi.com/api.php/" + otherComicAPIKey + "/search/" + searchResult;
+        // https://gateway.marvel.com/v1/public/characters?name=cyclops&ts=1&apikey=97a93e9e494106d892973948f5b253d9&hash=c32debe50244fc7a722036892da77e19
+        $.ajax({
+            url: marvelQueryURL,
+            method: "GET",
+        }).then(function (data) {
+            intelligenceVal = parseInt(data.results[0].powerstats.intelligence) / 20;
+            strengthVal = parseInt(data.results[0].powerstats.strength) / 20;
+            speedVal = parseInt(data.results[0].powerstats.speed) / 20;
+            durabilityVal = parseInt(data.results[0].powerstats.durability) / 20;
+            powerVal = parseInt(data.results[0].powerstats.power) / 20;
+            combatVal = parseInt(data.results[0].powerstats.combat) / 20;
+
+            radarChart.data.datasets[0].data = [intelligenceVal, strengthVal, speedVal, durabilityVal, powerVal, combatVal];
+            myRadarChart.update();
+        })
+    }
+
     $(".searchDropdownBar").on("submit", function (event) {
         event.preventDefault();
         searchComicCharacter($(".characterSelect").val());
         offsetNum = 0;
         acceptedGIFs = [];
         giphyF($(".characterSelect").val());
+        createRadarChart($(".characterSelect").val());
     })
 
     function createSearchOptions() {
@@ -59,6 +135,9 @@ $(function () {
         searchComicCharacter(localStorage.getItem("lastSearched"));
         // ^^^ if we do marvel-specific placehoder, might want to remove above line!
         createSearchOptions();
+        searchComicCharacter(localStorage.getItem("lastSearched"));
+        giphyF(localStorage.getItem("lastSearched"));
+        createRadarChart(localStorage.getItem("lastSearched"));
     }
 
     //Creates the character buttons
@@ -91,6 +170,7 @@ $(function () {
         offsetNum = 0;
         acceptedGIFs = [];
         giphyF($(this).val());
+        createRadarChart($(this).val());
     })
 
     //Search Bar
