@@ -99,10 +99,16 @@ make so that if breakpoint, make full width!
 .marvelLogoHeader {
   margin-bottom: -42px;
   height: 200px;
+  margin-top: -40px;
 }
 
 .headerMarvel {
   font-family: 'Monoton', cursive;
   font-size: 70px;
+
 }
 
+#characterDescription {
+  font-size: 20px;
+  font-family: 'Bangers', cursive;
+}
