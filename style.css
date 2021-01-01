@@ -11,10 +11,11 @@
   border-radius: 8px 8px;
 }
 
-/* img{
-    float: left;
-
-} */
+.GIFspot img {
+  width: 128px;
+  /* height: 128px; */
+  /* margin: auto; */
+}
 
 #GIPHY img {
   margin: auto;
@@ -75,7 +76,6 @@ body {
   display: table;
 }
 
-
 #heroPic {
   width: 25%;
   height: auto;
@@ -84,5 +84,3 @@ body {
 make so that if breakpoint, make full width!
 */
 
-
-}
