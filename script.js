@@ -104,6 +104,7 @@ $(function () {
     function giphyF(searchResult) {
         //giphy API
         var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=marvel " + searchResult + "&limit=25&offset=" + offsetNum + "&rating=g&lang=en";
+        $(".GIFspot").empty();
 
         $.ajax({
             url: giphyQueryURL,
@@ -132,49 +133,60 @@ $(function () {
             //accepted gifs no longer getting into array! b/c not getting to 10 GIFs! ==> dont think loop is working? Brute it first...
             // want it to stop when it stops getting GIFs (b/c SOMETHING IS STOPPING IT)    or it's not looping even once ==> no print (not enough)
 
-            if (acceptedGIFs.length >= 10) {
-                // if statement prevenets excessive printing that would be overwritten;
-                //  also makes it easier to JS create & append GIFs if we take out placeholders
-                var giphy = acceptedGIFs[0];
-                var giphya = acceptedGIFs[1];
-                var giphyb = acceptedGIFs[2];
-                var giphyc = acceptedGIFs[3];
-                var giphyd = acceptedGIFs[4];
-                var giphye = acceptedGIFs[5];
-                var giphyf = acceptedGIFs[6];
-                var giphyg = acceptedGIFs[7];
-                var giphyh = acceptedGIFs[8];
-                var giphyi = acceptedGIFs[9];
+            if (acceptedGIFs.length >= 10 || offsetNum >= 125) {
 
-                // var giphy = data.data[0].images.original.url;
-                // var giphya = data.data[1].images.original.url;
-                // var giphyb = data.data[2].images.original.url;
-                // var giphyc = data.data[3].images.original.url;
-                // var giphyd = data.data[4].images.original.url;
-                // var giphye = data.data[5].images.original.url;
-                // var giphyf = data.data[6].images.original.url;
-                // var giphyg = data.data[7].images.original.url;
-                // var giphyh = data.data[8].images.original.url;
-                // var giphyi = data.data[9].images.original.url;
-                $("#giphy1").attr("src", giphy)
-                $("#giphy2").attr("src", giphya)
-                $("#giphy3").attr("src", giphyb)
-                $("#giphy4").attr("src", giphyc)
-                $("#giphy5").attr("src", giphyd)
-                $("#giphy6").attr("src", giphye)
-                $("#giphy7").attr("src", giphyf)
-                $("#giphy8").attr("src", giphyg)
-                $("#giphy9").attr("src", giphyh)
-                $("#giphy10").attr("src", giphyi)
+                for (var i = 0; i < acceptedGIFs.length; i++) {
+                    $(".GIFspot").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
+                }
+
+
+                // // ========================================================================================================================
+                // //OLD WAY!
+
+                // // if statement prevenets excessive printing that would be overwritten;
+                // //  also makes it easier to JS create & append GIFs if we take out placeholders
+
+                // var giphy = acceptedGIFs[0];
+                // var giphya = acceptedGIFs[1];
+                // var giphyb = acceptedGIFs[2];
+                // var giphyc = acceptedGIFs[3];
+                // var giphyd = acceptedGIFs[4];
+                // var giphye = acceptedGIFs[5];
+                // var giphyf = acceptedGIFs[6];
+                // var giphyg = acceptedGIFs[7];
+                // var giphyh = acceptedGIFs[8];
+                // var giphyi = acceptedGIFs[9];
+
+                // // var giphy = data.data[0].images.original.url;
+                // // var giphya = data.data[1].images.original.url;
+                // // var giphyb = data.data[2].images.original.url;
+                // // var giphyc = data.data[3].images.original.url;
+                // // var giphyd = data.data[4].images.original.url;
+                // // var giphye = data.data[5].images.original.url;
+                // // var giphyf = data.data[6].images.original.url;
+                // // var giphyg = data.data[7].images.original.url;
+                // // var giphyh = data.data[8].images.original.url;
+                // // var giphyi = data.data[9].images.original.url;
+                // $("#giphy1").attr("src", giphy)
+                // $("#giphy2").attr("src", giphya)
+                // $("#giphy3").attr("src", giphyb)
+                // $("#giphy4").attr("src", giphyc)
+                // $("#giphy5").attr("src", giphyd)
+                // $("#giphy6").attr("src", giphye)
+                // $("#giphy7").attr("src", giphyf)
+                // $("#giphy8").attr("src", giphyg)
+                // $("#giphy9").attr("src", giphyh)
+                // $("#giphy10").attr("src", giphyi)
+                // // ^^^ creating anew would be more DRY than this! Would be good for the 'for' loop! (maybe empty/remove placeholders)
+                // // would have to empty each time if creating new (not reassigning)
+                // // ========================================================================================================================
             }
-            // ^^^ creating anew would be more DRY than this! Would be good for the 'for' loop! (maybe empty/remove placeholders)
-            // would have to empty each time if creating new (not reassigning)
 
-            if (acceptedGIFs.length < 10) {
+            if (acceptedGIFs.length < 10 && offsetNum < 125) {
                 offsetNum += 25;
                 giphyF(searchResult);
+                // sends additional ajax requests if there weren't enough GIFs grabbed; stops after 5 additional searches
             }
-            // sends additional ajax requests if there weren't enough GIFs grabbed
 
         })
     }
