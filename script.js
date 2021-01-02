@@ -10,9 +10,6 @@ $(function () {
         "Professor X", "Winter Soldier", "Cable", "Colossus", "Drax", "Odin", "Gamora", "Thing", "Blade", "Human Torch", "Nova"];
     var offsetNum;
     // var acceptedGIFs = [];
-
-    init();
-
     var intelligenceVal = 0;
     var strengthVal = 0;
     var speedVal = 0;
@@ -67,12 +64,13 @@ $(function () {
     };
     var myRadarChart = new Chart(ctx, radarChart);
 
+    init();
+
     //Creates chart with each character's stats such as intelligence, strength, speed - ERIC
     function createRadarChart(searchResult) {
-        var marvelQueryURL = "https://www.superheroapi.com/api.php/" + otherComicAPIKey + "/search/" + searchResult;
-        // https://gateway.marvel.com/v1/public/characters?name=cyclops&ts=1&apikey=97a93e9e494106d892973948f5b253d9&hash=c32debe50244fc7a722036892da77e19
+        var comicCharacterQueryURL = "https://www.superheroapi.com/api.php/" + otherComicAPIKey + "/search/" + searchResult;
         $.ajax({
-            url: marvelQueryURL,
+            url: comicCharacterQueryURL,
             method: "GET",
         }).then(function (data) {
             intelligenceVal = parseInt(data.results[0].powerstats.intelligence) / 20;
