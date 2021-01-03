@@ -98,14 +98,15 @@ body {
 /* ^^^ scales the hero image (can adjust!) 
 make so that if breakpoint, make full width!
 */
-/* To see how the biography text would look inside of a card*/
-#characterDescription{
+/* To make character description text standout from background*/
+.characterDescription{
   color: rgb(2, 8, 0);
   background-color: white;
   padding: 10px;
   border: solid;
   border-color: black;
   border-width: 5px;
+  max-width: 740px;
 }*/
 
 
@@ -128,3 +129,21 @@ make so that if breakpoint, make full width!
   font-size: 100px;
 }
 
+.characterStats{
+  color: black;
+background-color:white;
+max-width: 315px;
+border-color: rgb(2, 8, 0);
+border: solid;
+border-width: 5px;
+margin-bottom: 5px;
+}
+h2{
+  font-family: 'Bangers', cursive;
+  color: black;
+  font-weight: bolder;
+}
+h3{
+  color: black;
+  font-weight: bolder;
+}
