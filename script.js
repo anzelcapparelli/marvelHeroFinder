@@ -171,8 +171,14 @@ $(function () {
         createRadarChart($(this).val());
     })
 
+    // toggles the search history on mobile version
 
-    
+    $(".navigation").on("click", ".navbar-burger", function () {
+        console.log("navbar-burger works")
+            $(".navbar-menu").toggleClass("is-active");
+
+    })
+
     //Search Bar
     // $(".searchBar").on("submit", function (event) {
     //     event.preventDefault();
@@ -187,7 +193,7 @@ $(function () {
         var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=marvel " + searchResult + "&limit=25&offset=" + offsetNum + "&rating=g&lang=en";
         $(".GIFspot").empty();
         $(".GIFheader").empty();
-        
+
         $.ajax({
             url: giphyQueryURL,
             method: "GET",
