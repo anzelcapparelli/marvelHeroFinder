@@ -55,8 +55,8 @@
 
         <!-- searchbar ============================================================== -->
 
-        <div class="columns">
-          <div class="column is-offset-4 is-4">
+        <div class="columns is-centered">
+          <div class="column is-4">
             <div class="field">
               <form class="field is-grouped searchDropdownBar">
                 <!-- ^^^ should target this one for max width if want button included -->
@@ -82,12 +82,39 @@
 
         <div class="columns">
 
-          <!-- search history buttons ============================================== -->
+          <!-- navbar burger in progress (search history) =================================== -->
+
           <div class="column is-4">
-            <div class="card p-3 searchHistory is-align-content-stretch">
-              <!-- buttons are placed here -->
-            </div>
+
+            <h4>Search History</h4>
+
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="navbar-brand">
+                <!-- navbar items, navbar burger... -->
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+
+              </div>
+
+              <div class="navbar-menu">
+                <!-- navbar start, navbar end -->
+
+                <div class="card p-3 searchHistory is-align-content-stretch">
+                  <!-- buttons are placed here -->
+                </div>
+
+
+              </div>
+            </nav>
+
+
+            <!-- search history buttons ============================================== -->
           </div>
+
 
 
           <!-- main content ============================================== -->
@@ -144,14 +171,14 @@
 
 
   <div id="GIPHY" class="footerEl">
-    <div class="columns">
-      <div class="column is-offset-4">
+    <div class="columns is-centered">
+      <div class="column GIFheader">
         <h3><strong>Action Shots<strong></h3>
       </div>
     </div>
 
-    <div class="columns">
-      <div class="column is-offset-4 is-flex-wrap-wrap GIFspot">
+    <div class="columns is-centered">
+      <div class="column is-flex-wrap-wrap GIFspot">
 
         <img src="https://bulma.io/images/placeholders/128x128.png" width="128" height="128" class="m-3" id="giphy1" />
 
