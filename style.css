@@ -97,6 +97,15 @@ make so that if breakpoint, make full width!
   background-color: #ff0000;
 }
 
+.navbar-burger{
+  background-color: rgba(211, 211, 211, 0.822);
+}
+
+h3{
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .marvelLogoHeader {
   margin-bottom: -42px;
   height: 200px;
