@@ -173,7 +173,6 @@ $(function () {
 
     function giphyF(searchResult) {
         //giphy API
-        console.log("GIPHY");
         var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=marvel " + searchResult + "&limit=25&offset=" + offsetNum + "&rating=g&lang=en";
         $(".GIFspot").empty();
 

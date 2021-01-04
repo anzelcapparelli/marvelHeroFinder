@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marvel HeroFinder</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
-  <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
+  <link rel="stylesheet" href="./style.css" />
   <!-- google Font -->
   <link
     href="https://fonts.googleapis.com/css2?family=Bangers&family=Monoton&family=Playfair+Display+SC:wght@700&display=swap"
@@ -20,9 +20,8 @@
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
-            <img
-              src="https://1000logos.net/wp-content/uploads/2017/08/Color-Marvel-Logo.jpg"
-              class="marvelLogoHeader" alt="Marvel Logo">
+            <img src="https://1000logos.net/wp-content/uploads/2017/08/Color-Marvel-Logo.jpg" class="marvelLogoHeader"
+              alt="Marvel Logo">
             <span class="headerMarvel">HERO-FINDER</span>
           </h1>
           <!-- <h2 class="subtitle">
@@ -34,20 +33,10 @@
 
     <!-- is-desktop and  is-full-tablet seem iffy -->
 
-    <div class="columns mt-3">
-      <!-- find way to center buttons! Make card reach bottom of floor!-->
-      <div class="column is-one-fifth" id="searchHistory">
-        <div class="card p-3 searchHistory is-align-content-stretch">
-          <!-- buttons are placed here -->
-        </div>
-      </div>
+    <div class="columns m-3">
 
-      <!-- end of left column (search history button section) -->
-
-      <div class="column">
-
-        <!-- Search Bar. We are currently using drop-down list instead -->
-        <!-- <div class="field has-addons ">
+      <!-- Search Bar. We are currently using drop-down list instead -->
+      <!-- <div class="field has-addons ">
           <form class="column is-two-thirds field is-grouped searchBar">
             <p class="control is-expanded">
               <input class="input searchInput" type="text" placeholder="Spider-Man">
@@ -62,70 +51,147 @@
           </form>
         </div> -->
 
+      <div class="column">
 
-        <div class="field has-addons">
-          <form class="column is-two-thirds field is-grouped searchDropdownBar">
-            <!-- ^^^ should target this one for max with if want button included -->
-            <div class="control is-expanded">
-              <div class="select is-fullwidth">
-                <select class="characterSelect">
-                </select>
-              </div>
-            </div>
-            <div class="control">
-              <button type="submit" class="button is-warning">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </button>
-            </div>
-          </form>
-        </div>
+        <!-- searchbar ============================================================== -->
 
-
-        <!-- end of column nesting -->
-
-
-        <div class="mr-6" id="mainContent">
-          <!--maybe adjust margins in -->
-          <div id="marvelAPI">
-            <h2 id="characterName"><strong>Name</strong></h2>
-
-            <img src="" class="m-3" id="heroPic" />
-            <!-- Radar chart to show character stats such as power, speed, etc -->
-            <div class="characterStats">
-              <div class="statsTitle">Stats</div>
-              <div class="chartjs-radar">
-                <canvas id="radarChart" width="300" height="300"></canvas>
-              </div>
-            </div>
-            <div class ="characterDescription">
-              <p>Welcome to Marvel Hero-Finder, where you can find any super. </p>
-              <a id="wikiaLink"></a>
+        <div class="columns is-centered">
+          <div class="column is-4">
+            <div class="field">
+              <form class="field is-grouped searchDropdownBar">
+                <!-- ^^^ should target this one for max width if want button included -->
+                <div class="control is-expanded">
+                  <div class="select is-fullwidth">
+                    <select class="characterSelect">
+                    </select>
+                  </div>
+                </div>
+                <div class="control">
+                  <button type="submit" class="button is-warning">
+                    <span class="icon">
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
-          <!-- end of Marvel API section -->
         </div>
-      </div>
-      <!-- end of right column (page contents) -->
-    </div>
 
-    <!-- ====================================== add to body above this line! ====================================== -->
-    <div class="push"></div>
-    <!-- make sure push div is last! ensures footer doesn't cover content -->
+        <!-- beginning of nesting ============================================================= -->
+
+        <div class="columns">
+
+          <!-- navbar burger in progress (search history) =================================== -->
+
+          <div class="column navigation is-4">
+
+            <div class="field is-grouped">
+              <p class="has-text-centered">
+              <h3>Search History</h3>
+              </p>
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+
+            <nav class="navbar" id="navigationBar" role="navigation" aria-label="main navigation">
+
+              <div class="navbar-menu">
+
+                <!-- search history buttons ============================================== -->
+                <div class="card p-3 searchHistory is-align-content-stretch">
+                  <!-- buttons are placed here -->
+
+                </div>
+
+
+              </div>
+            </nav>
+
+
+          </div>
+
+
+
+          <!-- main content ============================================== -->
+          <div class="column is-8">
+            <div class="mr-6" id="mainContent">
+              <!--maybe adjust margins in -->
+
+
+              <div class="columns">
+                <div class="column is-6">
+                  <h2 id="characterName"></h2>
+                  <img src="https://bulma.io/images/placeholders/128x128.png" class="m-3" id="heroPic" />
+                </div>
+
+                <div class="column is-6">
+                  <!-- Radar chart to show character stats such as power, speed, etc -->
+                  <p class="has-text-centered m-3">
+                    <span>
+                      <h3>Stats</h3>
+                    </span>
+                  </p>
+                  <div class="characterStats mt-3">
+                    <!-- <div class="statsTitle">Stats</div> -->
+                    <div class="chartjs-radar">
+                      <canvas id="radarChart" width="300" height="300"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="columns">
+                <div class="column is-6">
+                  <div class="characterDescription">
+                    <p id="characterDescription">
+                      Welcome to Marvel Hero-Finder, where you can find any super.
+                    </p>
+                    <a id="wikiaLink"></a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+        <!-- end of 3 col nesting-->
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- end all columns -->
+
+  <br>
+  <br>
+  <br>
+  <!-- ^^^ ensures always some space between GIFs and text (even in mobile mode) -->
+
+  <!-- ====================================== add to body above this line! ====================================== -->
+  <div class="push"></div>
+  <!-- make sure push div is last! ensures footer doesn't cover content -->
+
   </div>
   <!-- end of wrapper -->
 
-  <!-- figure out way to space evenly! Attach action shots to bottom of page!-->
+
   <div id="GIPHY" class="footerEl">
-    <div class="columns">
-      <div class="column is-offset-one-fifth">
-        <h3><strong>Action Shots</strong></h3>
+    <div class="columns is-centered">
+      <div class="column GIFheader m-3">
+        <!-- <h3>Action Shots</h3> will be generated upon displaying GIFs-->
       </div>
     </div>
 
-    <div class="columns">
-      <div class="column is-offset-one-fifth is-flex-wrap-wrap GIFspot">
+    <div class="columns is-centered">
+      <div class="column is-flex-wrap-wrap GIFspot">
 
         <img src="" width="128" height="128" class="m-3" />
 
