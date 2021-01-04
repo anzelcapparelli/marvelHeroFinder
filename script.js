@@ -3,13 +3,13 @@ $(function () {
     var apiMarvelKey = "97a93e9e494106d892973948f5b253d9";
     var otherComicAPIKey = "10224034962282884";
     var hash = "c32debe50244fc7a722036892da77e19";
-    var characterSearchHistory = ["Wolverine", "Cyclops", "Thor", "Black Widow"];
+    var characterSearchHistory = [];
     var apiGiphyKey = "SL7Npc8K1yEe9sZwG498E44VaNV52n7A";
     var characterList = ["Thor", "Spider-Man", "Deadpool", "Iron Man", "Hulk", "Wolverine", "Captain America", "Doctor Strange", "Black Panther", "Groot",
         "Scarlet Witch", "Rocket Raccoon", "Black Widow", "Punisher", "Silver Surfer", "Vision", "Hawkeye", "Gambit", "Jean Grey", "Nightcrawler",
         "Professor X", "Winter Soldier", "Cable", "Colossus", "Drax", "Odin", "Gamora", "Thing", "Blade", "Human Torch", "Nova"];
-    var offsetNum;
-    // var acceptedGIFs = [];
+    var offsetNum = 0;
+    var acceptedGIFs = [];
     var intelligenceVal = 0;
     var strengthVal = 0;
     var speedVal = 0;
@@ -104,6 +104,7 @@ $(function () {
     function searchComicCharacter(searchResult) {
         var marvelQueryURL = "https://gateway.marvel.com/v1/public/characters?name=" + searchResult + "&ts=1&apikey=" + apiMarvelKey + "&hash=" + hash;
         // https://gateway.marvel.com/v1/public/characters?name=cyclops&ts=1&apikey=97a93e9e494106d892973948f5b253d9&hash=c32debe50244fc7a722036892da77e19
+
         $.ajax({
             url: marvelQueryURL,
             method: "GET",
@@ -122,12 +123,16 @@ $(function () {
             //Records the last searched character and stores to local storage
             localStorage.setItem("lastSearched", data.data.results[0].name);
         })
+
     }
 
     function init() {
         var storedButtons = JSON.parse(localStorage.getItem("buttons"));
         if (storedButtons !== null) {
             characterSearchHistory = storedButtons;
+        }
+        if (storedButtons === null) {
+            $(".searchHistoryHeader").text("");
         }
         createButtons();
         searchComicCharacter(localStorage.getItem("lastSearched"));
@@ -175,8 +180,7 @@ $(function () {
 
     $(".navigation").on("click", ".navbar-burger", function () {
         console.log("navbar-burger works")
-            $(".navbar-menu").toggleClass("is-active");
-
+        $(".navbar-menu").toggleClass("is-active");
     })
 
     //Search Bar
@@ -202,10 +206,9 @@ $(function () {
 
             for (var i = 0; i < data.pagination.count; i++) {
                 var GIFtitle = data.data[i].title.toLowerCase();
-                console.log(GIFtitle);
+                // console.log(GIFtitle);
 
                 if (acceptedGIFs.length < 10) {
-
                     if (GIFtitle.indexOf(searchResult.toLowerCase()) !== -1 && GIFtitle.indexOf((searchResult + "s").toLowerCase()) === -1) {
                         //makes sure that the superhero is in the title; makes sure that hero name is not actually referring to sports team
                         acceptedGIFs.push(data.data[i].images.original.url);
@@ -214,21 +217,18 @@ $(function () {
             }
             // gets all GIFs from search with superhero in the title
 
-
-
             console.log(acceptedGIFs);
+            console.log(acceptedGIFs.length);
+            console.log(offsetNum);
             //accepted gifs no longer getting into array! b/c not getting to 10 GIFs! ==> dont think loop is working? Brute it first...
             // want it to stop when it stops getting GIFs (b/c SOMETHING IS STOPPING IT)    or it's not looping even once ==> no print (not enough)
 
             if (acceptedGIFs.length >= 10 || offsetNum >= 125) {
-
                 $(".GIFheader").append("<h3> Action Shots </h3>");
-
 
                 for (var i = 0; i < acceptedGIFs.length; i++) {
                     $(".GIFspot").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
                 }
-
             }
 
             if (acceptedGIFs.length < 10 && offsetNum < 125) {
@@ -236,12 +236,8 @@ $(function () {
                 giphyF(searchResult);
                 // sends additional ajax requests if there weren't enough GIFs grabbed; stops after 5 additional searches
             }
-
         })
     }
-
-
-
 
     // $.ajax({
     //     url: "https://cors-anywhere.herokuapp.com/https://marvel.com/universe/Magneto_(Max_Eisenhardt)?utm_campaign=apiRef&utm_source=97a93e9e494106d892973948f5b253d9",
