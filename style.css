@@ -124,6 +124,11 @@ make so that if breakpoint, make full width!
 
 .navbar-burger{
   background-color: rgba(211, 211, 211, 0.822);
+  opacity: 1;
+}
+
+#navigationBar {
+  background-color: transparent;
 }
 
 h3{

@@ -97,7 +97,7 @@
               </a>
             </div>
 
-            <nav class="navbar" role="navigation" aria-label="main navigation">
+            <nav class="navbar" id="navigationBar" role="navigation" aria-label="main navigation">
 
               <div class="navbar-menu">
 
@@ -120,7 +120,7 @@
           <div class="column is-8">
             <div class="mr-6" id="mainContent">
               <!--maybe adjust margins in -->
-              <h2 id="characterName">Name</h2>
+              <h2 id="characterName"></h2>
 
               <div class="columns">
                 <div class="column is-6">
@@ -141,12 +141,12 @@
 
               <div class="columns">
                 <div class="column is-6">
-
-                  <p id="characterDescription"> 
-                    Welcome to Marvel Hero-Finder, where you can find any super.
-                  </p>
-                  <a id="wikiaLink"></a>
-
+                  <div class="characterDescription">
+                    <p id="characterDescription">
+                      Welcome to Marvel Hero-Finder, where you can find any super.
+                    </p>
+                    <a id="wikiaLink"></a>
+                  </div>
                 </div>
               </div>
 
@@ -164,10 +164,10 @@
   </div>
   <!-- end all columns -->
 
-<br>
-<br>
-<br>
-<!-- ^^^ ensures always some space between GIFs and text (even in mobile mode) -->
+  <br>
+  <br>
+  <br>
+  <!-- ^^^ ensures always some space between GIFs and text (even in mobile mode) -->
 
   <!-- ====================================== add to body above this line! ====================================== -->
   <div class="push"></div>
