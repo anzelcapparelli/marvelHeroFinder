@@ -67,7 +67,7 @@ body {
 }
 
 #GIPHY .is-flex-wrap-wrap,
-.searchDropdownBar {
+.searchDropdownBar, .searchHistory {
   max-width: 800px;
 }
 /* ^^^ affects how many GIFs can be seen on a single line (adjust max if going for bigger GIFs than placeholder for 5 per row */
@@ -75,11 +75,12 @@ body {
 
 #searchHistory {
   max-width: 600px;
+  width: 20%;
   display: table;
 }
 
 #heroPic {
-  width: 25%;
+  width: 100%;
   height: auto;
 }
 /* ^^^ scales the hero image (can adjust!) 
