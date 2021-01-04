@@ -189,7 +189,6 @@ $(function () {
 
     function giphyF(searchResult) {
         //giphy API
-
         var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=marvel " + searchResult + "&limit=25&offset=" + offsetNum + "&rating=g&lang=en";
         $(".GIFspot").empty();
         $(".GIFheader").empty();
@@ -229,7 +228,6 @@ $(function () {
                 for (var i = 0; i < acceptedGIFs.length; i++) {
                     $(".GIFspot").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
                 }
-
 
             }
 
