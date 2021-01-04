@@ -171,16 +171,9 @@ $(function () {
         createRadarChart($(this).val());
     })
 
-    //Search Bar
-    // $(".searchBar").on("submit", function (event) {
-    //     event.preventDefault();
-    //     searchComicCharacter($(".searchInput").val());
-    //     $(".searchInput").val("");
-    //     giphyF($(".searchInput").val());
-    // })
-
     function giphyF(searchResult) {
         //giphy API
+        console.log("GIPHY");
         var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiGiphyKey + "&q=marvel " + searchResult + "&limit=25&offset=" + offsetNum + "&rating=g&lang=en";
         $(".GIFspot").empty();
 
@@ -196,7 +189,6 @@ $(function () {
                 console.log(GIFtitle);
 
                 if (acceptedGIFs.length < 10) {
-
                     if (GIFtitle.indexOf(searchResult.toLowerCase()) !== -1 && GIFtitle.indexOf((searchResult + "s").toLowerCase()) === -1) {
                         //makes sure that the superhero is in the title; makes sure that hero name is not actually referring to sports team
                         acceptedGIFs.push(data.data[i].images.original.url);
@@ -205,18 +197,14 @@ $(function () {
             }
             // gets all GIFs from search with superhero in the title
 
-
-
             console.log(acceptedGIFs);
             //accepted gifs no longer getting into array! b/c not getting to 10 GIFs! ==> dont think loop is working? Brute it first...
             // want it to stop when it stops getting GIFs (b/c SOMETHING IS STOPPING IT)    or it's not looping even once ==> no print (not enough)
 
             if (acceptedGIFs.length >= 10 || offsetNum >= 125) {
-
                 for (var i = 0; i < acceptedGIFs.length; i++) {
                     $(".GIFspot").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
                 }
-
             }
 
             if (acceptedGIFs.length < 10 && offsetNum < 125) {
@@ -227,18 +215,4 @@ $(function () {
 
         })
     }
-
-
-
-
-    // $.ajax({
-    //     url: "https://cors-anywhere.herokuapp.com/https://marvel.com/universe/Magneto_(Max_Eisenhardt)?utm_campaign=apiRef&utm_source=97a93e9e494106d892973948f5b253d9",
-    //     method: "GET",
-    // }).then(function (data) {
-    //     $(".marvelDump").text(data);
-    //     console.log(data);
-    //     console.log($(".masthead__copy").text());
-    // })
-    //https://cors-anywhere.herokuapp.com/https://marvel.com/universe/Magneto_(Max_Eisenhardt)?utm_campaign=apiRef&utm_source=97a93e9e494106d892973948f5b253d9
-    // https://www.marvel.com/characters/magneto-max-eisenhardt?utm_campaign=apiRef&utm_source=97a93e9e494106d892973948f5b253d9
 });
