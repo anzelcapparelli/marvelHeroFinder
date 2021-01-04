@@ -4,7 +4,7 @@
   min-width: 75%;
   margin: 0.5em;
   border-radius: 32px 0px;
-  font-family: 'Playfair Display SC', serif;
+  font-family: "Playfair Display SC", serif;
 }
 
 /* Delete button for character buttons */
@@ -36,17 +36,16 @@
 
 /* styling for sticky footer */
 
-html{
+html {
   /* adds a background photo with opacity */
-  background: url(MarvelHeroes2.jpg) no-repeat center center fixed; 
+  background: url(MarvelHeroes2.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-blend-mode: lighten;
   /* to change opacity without creating a div adding pseudos*/
- background-color: rgb(155, 146, 146, .5);
-
+  background-color: rgb(155, 146, 146, 0.5);
 }
 
 body {
@@ -77,8 +76,10 @@ body {
   margin-right: auto;
 }
 
-#GIPHY .is-flex-wrap-wrap, .GIFheader,
-.searchDropdownBar, .searchHistory {
+#GIPHY .is-flex-wrap-wrap,
+.GIFheader,
+.searchDropdownBar,
+.searchHistory {
   max-width: 800px;
 }
 /* ^^^ affects how many GIFs can be seen on a single line (adjust max if going for bigger GIFs than placeholder for 5 per row */
@@ -89,7 +90,6 @@ body {
   width: 20%;
   display: table;
   background-color: black;
-  
 }
 
 #heroPic {
@@ -100,7 +100,7 @@ body {
 make so that if breakpoint, make full width!
 */
 /* To make character description text standout from background*/
-.characterDescription{
+.characterDescription {
   color: rgb(2, 8, 0);
   background-color: white;
   padding: 10px;
@@ -109,12 +109,11 @@ make so that if breakpoint, make full width!
   border-width: 5px;
   max-width: 740px;
   font-size: 20px;
-  font-family: 'Bangers', cursive;
+  font-family: "Bangers", cursive;
 }
 
-
 #characterName {
-  font-family: 'Bangers', cursive;
+  font-family: "Bangers", cursive;
   font-size: 60px;
 }
 
@@ -122,7 +121,7 @@ make so that if breakpoint, make full width!
   background-color: #ff0000;
 }
 
-.navbar-burger{
+.navbar-burger {
   background-color: rgba(211, 211, 211, 0.822);
   opacity: 1;
 }
@@ -131,7 +130,7 @@ make so that if breakpoint, make full width!
   background-color: transparent;
 }
 
-h3{
+h3 {
   font-weight: bold;
   font-size: 20px;
 }
@@ -143,26 +142,33 @@ h3{
 }
 
 .headerMarvel {
-  font-family: 'Monoton', cursive;
+  font-family: "Monoton", cursive;
   font-size: 70px;
-
 }
 
-.characterStats{
+#radarChart {
   color: black;
-background-color:white;
-max-width: 315px;
-border-color: rgb(2, 8, 0);
-border: solid;
-border-width: 5px;
-margin-bottom: 5px;
+  background-color: white;
+  max-width: 315px;
+  border-color: rgb(2, 8, 0);
+  border: solid;
+  border-width: 5px;
+  margin-bottom: 5px;
 }
-h2{
-  font-family: 'Bangers', cursive;
+h2 {
+  font-family: "Bangers", cursive;
   color: black;
   font-weight: bolder;
+  background-color: white;
 }
-h3{
+h3 {
   color: black;
   font-weight: bolder;
+  background-color: white;
+}
+
+.searchHistory {
+  border-color: rgb(2, 8, 0);
+  border: solid;
+  border-width: 5px;
 }
