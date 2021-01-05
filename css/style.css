@@ -208,6 +208,9 @@ h2 {
 .searchHistoryHeader:empty {
   display: none;
 }
-/* #searchHistory:empty {
-  display: none;
-} */
+
+/* #searchHistory:empty (
+  .navbar-menu{
+    display: none;
+  }
+) */
