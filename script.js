@@ -234,9 +234,10 @@ $(function () {
 
             if (acceptedGIFs.length >= 10 || offsetNum >= 125) {
                 $(".GIFheader").append("<h3 id='GIFheader'> Action Shots </h3>");
+                $(".GIFspot").append("<div id='comicBkgrnd'>")
 
                 for (var i = 0; i < acceptedGIFs.length; i++) {
-                    $(".GIFspot").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
+                    $("#comicBkgrnd").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
                 }
             }
 

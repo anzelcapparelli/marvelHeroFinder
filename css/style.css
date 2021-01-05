@@ -196,5 +196,13 @@ padding: 0.5em;
   border-color: black;
   border-width: 5px;
   background-color: white;
+  width: fit-content;
 }
 /* maybe change display, and need something to target outer for border on searchHistory */
+
+#comicBkgrnd {
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  background-color: white;
+}
