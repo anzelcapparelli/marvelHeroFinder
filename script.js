@@ -139,12 +139,15 @@ $(function () {
             characterSearchHistory = storedButtons;
         }
         createButtons();
-        searchComicCharacter(localStorage.getItem("lastSearched"));
-        // ^^^ if we do marvel-specific placehoder, might want to remove above line!
-        createSearchOptions();
-        searchComicCharacter(localStorage.getItem("lastSearched"));
-        giphyF(localStorage.getItem("lastSearched"));
-        createRadarChart(localStorage.getItem("lastSearched"));
+        if (localStorage.getItem("lastSearched") !== "") {
+            searchComicCharacter(localStorage.getItem("lastSearched"));
+            // ^^^ if we do marvel-specific placehoder, might want to remove above line!
+            createSearchOptions();
+            searchComicCharacter(localStorage.getItem("lastSearched"));
+            giphyF(localStorage.getItem("lastSearched"));
+            createRadarChart(localStorage.getItem("lastSearched"));
+        }
+
     }
 
     //Creates the character buttons
@@ -156,7 +159,7 @@ $(function () {
             $(".searchHistoryHeader").text("Search History");
             $("#searchHistoryNavbar").attr("class", "navbar-burger");
             $(".navbar").removeClass("is-hidden");
-            
+
             $("#searchHistory").attr("class", "card p-3 searchHistory is-align-content-stretch");
         }
         $(".searchHistory").empty();
@@ -180,6 +183,9 @@ $(function () {
         characterSearchHistory.splice(characterSearchHistory.indexOf($(this).val()), 1)
         createButtons();
         localStorage.setItem("buttons", JSON.stringify(characterSearchHistory));
+        if ($(this).val() === localStorage.getItem("lastSearched")) {
+            localStorage.setItem("lastSearched", "");
+        }
     })
 
     $(".searchHistory").on("click", ".characterButton", function () {
