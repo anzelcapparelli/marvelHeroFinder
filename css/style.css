@@ -13,16 +13,11 @@
   border-radius: 8px 8px;
 }
 
-.GIFspot img {
-  width: 128px;
-  /* height: 128px; */
-  /* margin: auto; */
-}
-
 #GIPHY img {
   margin: auto;
   width: 128px;
   height: 128px;
+  justify-content: space-evenly;
 }
 #GIPHY h3 {
   margin: 12px;
@@ -72,8 +67,8 @@ body {
 }
 
 #GIPHY {
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 #GIPHY .is-flex-wrap-wrap,
@@ -133,7 +128,6 @@ h3 {
   color: black;
   font-weight: bolder;
   background-color: white;
-  
 }
 
 .marvelLogoHeader {
@@ -163,22 +157,21 @@ h2 {
   background-color: white;
 }
 
-
-.srch{
+.srch {
   max-width: 140px;
 }
-#statsTitle, #GIFheader, .searchHistoryHeader { 
+#statsTitle,
+#GIFheader,
+.searchHistoryHeader {
   /* max-width: 50px; */
-display: inline-block;
-padding: 0.5em;
+  display: inline-block;
+  padding: 0.5em;
 }
-
 
 #searchHistory {
   max-width: 600px;
   width: 100%;
-  display:inline-table;
-
+  display: inline-table;
 }
 
 .navbar-menu {
@@ -187,7 +180,6 @@ padding: 0.5em;
   border-width: 5px;
   /* display: inline-flex; */
   padding: 0;
-
 }
 
 /* #navigationBar {
@@ -201,6 +193,7 @@ padding: 0.5em;
   border-width: 5px;
   background-color: white;
   width: fit-content;
+  display: inline-table;
 }
 /* maybe change display, and need something to target outer for border on searchHistory */
 
@@ -209,4 +202,12 @@ padding: 0.5em;
   border-color: black;
   border-width: 5px;
   background-color: white;
+  width: fit-content;
 }
+
+.searchHistoryHeader:empty {
+  display: none;
+}
+/* #searchHistory:empty {
+  display: none;
+} */

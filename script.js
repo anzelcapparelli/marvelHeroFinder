@@ -147,6 +147,7 @@ $(function () {
         if (characterSearchHistory.length > 0) {
             $(".searchHistoryHeader").text("Search History");
             $("#searchHistoryNavbar").attr("class", "navbar-burger");
+            // $(".navbar-menu").append("<div id='searchHistory' class='card p-3 searchHistory is-align-content-stretch is-hidden'></div>")
             $("#searchHistory").attr("class", "card p-3 searchHistory is-align-content-stretch");
         }
         $(".searchHistory").empty();
@@ -184,13 +185,6 @@ $(function () {
 
     $(".navigation").on("click", ".navbar-burger", function () {
         $(".navbar-menu").toggleClass("is-active");
-        // if ($(".navbar-menu").attr("data-val")== "1") {
-        //     $(".navbar-menu").attr("style", "display: inline-flex");
-        //     $(".navbar-menu").attr("data-val", "2");
-        // } else if ($(".navbar-menu").attr("data-val")== "2") {
-        //     $(".navbar-menu").attr("style", "display: none");
-        //     $(".navbar-menu").attr("data-val", "1");
-        // }
 
 
     })
