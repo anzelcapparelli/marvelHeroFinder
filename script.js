@@ -200,8 +200,6 @@ $(function () {
 
     $(".navigation").on("click", ".navbar-burger", function () {
         $(".navbar-menu").toggleClass("is-active");
-
-
     })
 
     //Search Bar
