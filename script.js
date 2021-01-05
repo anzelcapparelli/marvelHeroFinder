@@ -144,10 +144,15 @@ $(function () {
 
     //Creates the character buttons
     function createButtons() {
+        if (!(characterSearchHistory.length > 0)) {
+            $(".navbar").addClass("is-hidden");
+        }
         if (characterSearchHistory.length > 0) {
             $(".searchHistoryHeader").text("Search History");
-            $("#searchHistoryNavbar").attr("class","navbar-burger");
-            $("#searchHistory").attr("class","card p-3 searchHistory is-align-content-stretch");
+            $("#searchHistoryNavbar").attr("class", "navbar-burger");
+            $(".navbar").removeClass("is-hidden");
+            
+            $("#searchHistory").attr("class", "card p-3 searchHistory is-align-content-stretch");
         }
         $(".searchHistory").empty();
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
@@ -184,6 +189,8 @@ $(function () {
 
     $(".navigation").on("click", ".navbar-burger", function () {
         $(".navbar-menu").toggleClass("is-active");
+
+
     })
 
     //Search Bar
@@ -224,10 +231,11 @@ $(function () {
             // want it to stop when it stops getting GIFs (b/c SOMETHING IS STOPPING IT)    or it's not looping even once ==> no print (not enough)
 
             if (acceptedGIFs.length >= 10 || offsetNum >= 125) {
-                $(".GIFheader").append("<h3> Action Shots </h3>");
+                $(".GIFheader").append("<h3 id='GIFheader'> Action Shots </h3>");
+                $(".GIFspot").append("<div id='comicBkgrnd'>")
 
                 for (var i = 0; i < acceptedGIFs.length; i++) {
-                    $(".GIFspot").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
+                    $("#comicBkgrnd").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
                 }
             }
 
