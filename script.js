@@ -111,7 +111,12 @@ $(function () {
             method: "GET",
         }).then(function (data) {
             $("#characterName").text(data.data.results[0].name);
-            $("#characterDescription").text(data.data.results[0].description);
+            if (data.data.results[0].description === "") {
+                $("#characterDescription").text("no desciption provided")
+            }
+            else {
+                $("#characterDescription").text(data.data.results[0].description);
+            }
             var wikiaLink = data.data.results[0].urls[1].url;
             $("#wikiaLink").attr("href", wikiaLink).text("Wikia Link");
             var imageLink = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
@@ -146,8 +151,8 @@ $(function () {
     function createButtons() {
         if (characterSearchHistory.length > 0) {
             $(".searchHistoryHeader").text("Search History");
-            $("#searchHistoryNavbar").attr("class","navbar-burger");
-            $("#searchHistory").attr("class","card p-3 searchHistory is-align-content-stretch");
+            $("#searchHistoryNavbar").attr("class", "navbar-burger");
+            $("#searchHistory").attr("class", "card p-3 searchHistory is-align-content-stretch");
         }
         $(".searchHistory").empty();
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
