@@ -111,7 +111,12 @@ $(function () {
             method: "GET",
         }).then(function (data) {
             $("#characterName").text(data.data.results[0].name);
-            $("#characterDescription").text(data.data.results[0].description);
+            if (data.data.results[0].description === "") {
+                $("#characterDescription").text("no desciption provided")
+            }
+            else {
+                $("#characterDescription").text(data.data.results[0].description);
+            }
             var wikiaLink = data.data.results[0].urls[1].url;
             $("#wikiaLink").attr("href", wikiaLink).text("Wikia Link");
             var imageLink = data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension;
