@@ -7,6 +7,8 @@
   <title>Marvel HeroFinder</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
+  <link rel="stylesheet" href="./vendor/jquery-ui.min.css">
+
   <link rel="stylesheet" href="./style.css" />
   <!-- google Font -->
   <link
@@ -35,21 +37,6 @@
 
     <div class="columns m-3">
 
-      <!-- Search Bar. We are currently using drop-down list instead -->
-      <!-- <div class="field has-addons ">
-          <form class="column is-two-thirds field is-grouped searchBar">
-            <p class="control is-expanded">
-              <input class="input searchInput" type="text" placeholder="Spider-Man">
-            </p>
-            <p class="control">
-              <button type="submit" class="button is-warning">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </button>
-            </p>
-          </form>
-        </div> -->
 
       <div class="column">
 
@@ -57,24 +44,24 @@
 
         <div class="columns is-centered">
           <div class="column is-4">
+
+            <!-- Search Bar-->
             <div class="field">
-              <form class="field is-grouped searchDropdownBar">
-                <!-- ^^^ should target this one for max width if want button included -->
-                <div class="control is-expanded">
-                  <div class="select is-fullwidth">
-                    <select class="characterSelect">
-                    </select>
-                  </div>
-                </div>
-                <div class="control">
+              <form class="column is-two-thirds field is-grouped searchBar">
+                <p class="control is-expanded">
+                  <input class="input searchInput characterSelect" id="searchInput" type="text" placeholder="Spider-Man">
+                </p>
+                <p class="control">
                   <button type="submit" class="button is-warning">
                     <span class="icon">
                       <i class="fas fa-search"></i>
                     </span>
                   </button>
-                </div>
+                </p>
               </form>
             </div>
+
+
           </div>
         </div>
 
@@ -225,6 +212,10 @@
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
   <!-- ^^ script enabling easy icon usage -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <script src="./vendor/jquery-ui.min.js"></script>
+
+  <script src="./js/possheroes.js"></script>
+  <script src="./js/autocomplete.js"></script>
   <script src="script.js"></script>
 </body>
 
