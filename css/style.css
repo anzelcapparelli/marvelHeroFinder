@@ -115,8 +115,12 @@ make so that if breakpoint, make full width!
 }
 
 .navbar-burger {
-  background-color: rgba(211, 211, 211, 0.822);
+  background-color: rgba(211, 211, 211, 1);
   opacity: 1;
+}
+
+.navbar-burger:hover {
+  background-color: rgba(211, 211, 211, 1);
 }
 
 #navigationBar {
