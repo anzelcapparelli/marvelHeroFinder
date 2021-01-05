@@ -147,6 +147,7 @@ $(function () {
         if (characterSearchHistory.length > 0) {
             $(".searchHistoryHeader").text("Search History");
             $("#searchHistoryNavbar").attr("class","navbar-burger");
+            $("#searchHistory").attr("class","card p-3 searchHistory is-align-content-stretch");
         }
         $(".searchHistory").empty();
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
