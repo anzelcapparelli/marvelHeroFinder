@@ -7,6 +7,8 @@
   <title>Marvel HeroFinder</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
+  <link rel="stylesheet" href="./vendor/jquery-ui.min.css">
+
   <link rel="stylesheet" href="./style.css" />
   <!-- google Font -->
   <link
@@ -35,21 +37,6 @@
 
     <div class="columns m-3">
 
-      <!-- Search Bar. We are currently using drop-down list instead -->
-      <!-- <div class="field has-addons ">
-          <form class="column is-two-thirds field is-grouped searchBar">
-            <p class="control is-expanded">
-              <input class="input searchInput" type="text" placeholder="Spider-Man">
-            </p>
-            <p class="control">
-              <button type="submit" class="button is-warning">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </button>
-            </p>
-          </form>
-        </div> -->
 
       <div class="column">
 
@@ -57,24 +44,24 @@
 
         <div class="columns is-centered">
           <div class="column is-4">
+
+            <!-- Search Bar-->
             <div class="field">
-              <form class="field is-grouped searchDropdownBar">
-                <!-- ^^^ should target this one for max width if want button included -->
-                <div class="control is-expanded">
-                  <div class="select is-fullwidth">
-                    <select class="characterSelect">
-                    </select>
-                  </div>
-                </div>
-                <div class="control">
+              <form class="column is-two-thirds field is-grouped searchBar">
+                <p class="control is-expanded">
+                  <input class="input searchInput characterSelect" id="searchInput" type="text" placeholder="Spider-Man">
+                </p>
+                <p class="control">
                   <button type="submit" class="button is-warning">
                     <span class="icon">
                       <i class="fas fa-search"></i>
                     </span>
                   </button>
-                </div>
+                </p>
               </form>
             </div>
+
+
           </div>
         </div>
 
@@ -88,7 +75,11 @@
 
             <div class="field is-grouped">
               <p class="has-text-centered">
+<<<<<<< HEAD
               <h3 class = "searchHistoryHeader"></h3>
+=======
+              <h3 id="srch">Search History</h3>
+>>>>>>> 3cdb394c328f3bef209afe3235cb3d218ceb7e60
               </p>
               <a role="button" class="navbar-burger is-hidden" id = "searchHistoryNavbar" aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
@@ -125,14 +116,14 @@
               <div class="columns">
                 <div class="column is-6">
                   <h2 id="characterName"></h2>
-                  <img src="https://bulma.io/images/placeholders/128x128.png" class="m-3" id="heroPic" />
+                  <img src="MarvelHeadShot.jpg" class="m-3" id="heroPic" />
                 </div>
 
                 <div class="column is-6">
                   <!-- Radar chart to show character stats such as power, speed, etc -->
                   <p class="has-text-centered m-3">
                     <span>
-                      <h3>Stats</h3>
+                      <h3 id="game">stats</h3>
                     </span>
                   </p>
                   <div class="characterStats mt-3">
@@ -225,6 +216,10 @@
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
   <!-- ^^ script enabling easy icon usage -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <script src="./vendor/jquery-ui.min.js"></script>
+
+  <script src="./js/possheroes.js"></script>
+  <script src="./js/autocomplete.js"></script>
   <script src="script.js"></script>
 </body>
 

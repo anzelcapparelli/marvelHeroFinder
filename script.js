@@ -85,13 +85,14 @@ $(function () {
         })
     }
 
-    $(".searchDropdownBar").on("submit", function (event) {
+    $(".searchBar").on("submit", function (event) {
         event.preventDefault();
         searchComicCharacter($(".characterSelect").val());
         offsetNum = 0;
         acceptedGIFs = [];
         giphyF($(".characterSelect").val());
         createRadarChart($(".characterSelect").val());
+        $(".characterSelect").val("");
     })
 
     function createSearchOptions() {
