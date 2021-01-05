@@ -182,4 +182,11 @@ padding: 0.5em;
   border-color: black;
 }
 
+.navbar-menu {
+  border-color: black;
+  border-width: 5px;
+  /* display: inline-flex; */
+  padding: 0;
+}
+
 /* maybe change display, and need something to target outer for border on searchHistory */

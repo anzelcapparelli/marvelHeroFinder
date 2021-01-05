@@ -146,8 +146,8 @@ $(function () {
     function createButtons() {
         if (characterSearchHistory.length > 0) {
             $(".searchHistoryHeader").text("Search History");
-            $("#searchHistoryNavbar").attr("class","navbar-burger");
-            $("#searchHistory").attr("class","card p-3 searchHistory is-align-content-stretch");
+            $("#searchHistoryNavbar").attr("class", "navbar-burger");
+            $("#searchHistory").attr("class", "card p-3 searchHistory is-align-content-stretch");
         }
         $(".searchHistory").empty();
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
@@ -183,7 +183,16 @@ $(function () {
     // toggles the search history on mobile version
 
     $(".navigation").on("click", ".navbar-burger", function () {
-        $(".navbar-menu").toggleClass("is-active");
+        // $(".navbar-menu").toggleClass("is-active");
+        if ($(".navbar-menu").attr("display", "none")) {
+            $(".navbar-menu").attr("display", "inline-flex");
+        } else if ($(".navbar-menu").attr("display", "inline-flex")) {
+            $(".navbar-menu").attr("display", "none");
+        }
+
+        //toggle attribute display:none
+        // $(".navbar-menu").toggleClass("is-active");     //toggle attribute display: inline-flex
+
     })
 
     //Search Bar
