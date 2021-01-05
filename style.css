@@ -85,13 +85,6 @@ body {
 /* ^^^ affects how many GIFs can be seen on a single line (adjust max if going for bigger GIFs than placeholder for 5 per row */
 /* matching  */
 
-#searchHistory {
-  max-width: 600px;
-  width: 20%;
-  display: table;
-  background-color: black;
-}
-
 #heroPic {
   width: 100%;
   height: auto;
@@ -166,14 +159,27 @@ h2 {
   background-color: white;
 }
 
+
+.srch{
+  max-width: 140px;
+}
+#statsTitle, #GIFheader, .searchHistoryHeader { 
+  /* max-width: 50px; */
+display: inline-block;
+padding: 0.5em;
+}
+
 .searchHistory {
   border-color: rgb(2, 8, 0);
   border: solid;
   border-width: 5px;
 }
-.srch{
-  max-width: 140px;
+
+#searchHistory {
+  max-width: 600px;
+  width: 20%;
+  display: table;
+  border-color: black;
 }
-#game{ 
-  max-width: 50px;
-}
+
+/* maybe change display, and need something to target outer for border on searchHistory */

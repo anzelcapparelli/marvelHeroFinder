@@ -224,7 +224,7 @@ $(function () {
             // want it to stop when it stops getting GIFs (b/c SOMETHING IS STOPPING IT)    or it's not looping even once ==> no print (not enough)
 
             if (acceptedGIFs.length >= 10 || offsetNum >= 125) {
-                $(".GIFheader").append("<h3> Action Shots </h3>");
+                $(".GIFheader").append("<h3 id='GIFheader'> Action Shots </h3>");
 
                 for (var i = 0; i < acceptedGIFs.length; i++) {
                     $(".GIFspot").append("<img src=" + acceptedGIFs[i] + " class='m-3'>");
