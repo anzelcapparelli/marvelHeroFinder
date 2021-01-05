@@ -38,7 +38,7 @@
 
 html {
   /* adds a background photo with opacity */
-  background: url("MarvelHeroes2.jpg") no-repeat center center fixed;
+  background: url("marvelheroes2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -133,6 +133,10 @@ make so that if breakpoint, make full width!
 h3 {
   font-weight: bold;
   font-size: 20px;
+  color: black;
+  font-weight: bolder;
+  background-color: white;
+  
 }
 
 .marvelLogoHeader {
@@ -161,14 +165,15 @@ h2 {
   font-weight: bolder;
   background-color: white;
 }
-h3 {
-  color: black;
-  font-weight: bolder;
-  background-color: white;
-}
 
 .searchHistory {
   border-color: rgb(2, 8, 0);
   border: solid;
   border-width: 5px;
+}
+.srch{
+  max-width: 140px;
+}
+#game{ 
+  max-width: 50px;
 }
