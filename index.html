@@ -5,11 +5,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marvel HeroFinder</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
   <link rel="stylesheet" href="./vendor/jquery-ui.min.css">
+  <link rel="stylesheet" href="./css/searchHistory.css" />
+  <!-- added custom before framework so bulma's framework can toggle -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
 
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./css/style.css" />
   <!-- google Font -->
   <link
     href="https://fonts.googleapis.com/css2?family=Bangers&family=Monoton&family=Playfair+Display+SC:wght@700&display=swap"
@@ -86,7 +88,7 @@
               </a>
             </div>
 
-            <nav class="navbar" id="navigationBar" role="navigation" aria-label="main navigation">
+            <nav class="navbar is-hidden" id="navigationBar" role="navigation" aria-label="main navigation">
 
               <div class="navbar-menu">
 
@@ -100,6 +102,7 @@
               </div>
             </nav>
 
+            <!-- maybe add opaque div here to retain size? or offset by 4 -->
 
           </div>
 
@@ -113,19 +116,22 @@
 
               <div class="columns">
                 <div class="column is-6">
-                  <h2 id="characterName"></h2>
-                  <img src="MarvelHeadShot.jpg" class="m-3" id="heroPic" />
+                  <div id="imgPic">
+                    <h2 id="characterName"></h2>
+                    <br>
+                    <img src="./images/MarvelHeadShot.jpg" id="heroPic" />
+                  </div>
                 </div>
 
                 <div class="column is-6">
                   <!-- Radar chart to show character stats such as power, speed, etc -->
                   <p class="has-text-centered m-3">
                     <span>
-                      <h3 id="game">stats</h3>
+                      <h3 id="statsTitle">stats</h3>
                     </span>
                   </p>
                   <div class="characterStats mt-3">
-                    <!-- <div class="statsTitle">Stats</div> -->
+
                     <div class="chartjs-radar">
                       <canvas id="radarChart" width="300" height="300"></canvas>
                     </div>
@@ -175,8 +181,12 @@
       </div>
     </div>
 
-    <div class="columns is-centered">
+    <div class="columns is-centered is-justify-content-center">
       <div class="column is-flex-wrap-wrap GIFspot">
+<!-- 
+        <img src="" width="128" height="128" class="m-3" />
+
+        <img src="" width="128" height="128" class="m-3" />   
 
         <img src="" width="128" height="128" class="m-3" />
 
@@ -192,11 +202,7 @@
 
         <img src="" width="128" height="128" class="m-3" />
 
-        <img src="" width="128" height="128" class="m-3" />
-
-        <img src="" width="128" height="128" class="m-3" />
-
-        <img src="" width="128" height="128" class="m-3" />
+        <img src="" width="128" height="128" class="m-3" /> -->
       </div>
     </div>
   </div>
