@@ -183,15 +183,15 @@ $(function () {
     // toggles the search history on mobile version
 
     $(".navigation").on("click", ".navbar-burger", function () {
-        // $(".navbar-menu").toggleClass("is-active");
-        if ($(".navbar-menu").attr("display", "none")) {
-            $(".navbar-menu").attr("display", "inline-flex");
-        } else if ($(".navbar-menu").attr("display", "inline-flex")) {
-            $(".navbar-menu").attr("display", "none");
-        }
+        $(".navbar-menu").toggleClass("is-active");
+        // if ($(".navbar-menu").attr("data-val")== "1") {
+        //     $(".navbar-menu").attr("style", "display: inline-flex");
+        //     $(".navbar-menu").attr("data-val", "2");
+        // } else if ($(".navbar-menu").attr("data-val")== "2") {
+        //     $(".navbar-menu").attr("style", "display: none");
+        //     $(".navbar-menu").attr("data-val", "1");
+        // }
 
-        //toggle attribute display:none
-        // $(".navbar-menu").toggleClass("is-active");     //toggle attribute display: inline-flex
 
     })
 
