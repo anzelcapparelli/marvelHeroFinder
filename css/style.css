@@ -13,16 +13,11 @@
   border-radius: 8px 8px;
 }
 
-.GIFspot img {
-  width: 128px;
-  /* height: 128px; */
-  /* margin: auto; */
-}
-
 #GIPHY img {
   margin: auto;
   width: 128px;
   height: 128px;
+  justify-content: space-evenly;
 }
 #GIPHY h3 {
   margin: 12px;
@@ -38,7 +33,7 @@
 
 html {
   /* adds a background photo with opacity */
-  background: url(MarvelHeroes2.jpg) no-repeat center center fixed;
+  background: url("../images/marvelHeroes2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -72,8 +67,8 @@ body {
 }
 
 #GIPHY {
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 #GIPHY .is-flex-wrap-wrap,
@@ -84,13 +79,6 @@ body {
 }
 /* ^^^ affects how many GIFs can be seen on a single line (adjust max if going for bigger GIFs than placeholder for 5 per row */
 /* matching  */
-
-#searchHistory {
-  max-width: 600px;
-  width: 20%;
-  display: table;
-  background-color: black;
-}
 
 #heroPic {
   width: 100%;
@@ -122,8 +110,12 @@ make so that if breakpoint, make full width!
 }
 
 .navbar-burger {
-  background-color: rgba(211, 211, 211, 0.822);
+  background-color: rgba(211, 211, 211, 1);
   opacity: 1;
+}
+
+.navbar-burger:hover {
+  background-color: rgba(211, 211, 211, 1);
 }
 
 #navigationBar {
@@ -133,6 +125,9 @@ make so that if breakpoint, make full width!
 h3 {
   font-weight: bold;
   font-size: 20px;
+  color: black;
+  font-weight: bolder;
+  background-color: white;
 }
 
 .marvelLogoHeader {
@@ -161,14 +156,61 @@ h2 {
   font-weight: bolder;
   background-color: white;
 }
-h3 {
-  color: black;
-  font-weight: bolder;
-  background-color: white;
+
+.srch {
+  max-width: 140px;
+}
+#statsTitle,
+#GIFheader,
+.searchHistoryHeader {
+  /* max-width: 50px; */
+  display: inline-block;
+  padding: 0.5em;
 }
 
-.searchHistory {
-  border-color: rgb(2, 8, 0);
-  border: solid;
-  border-width: 5px;
+#searchHistory {
+  max-width: 600px;
+  width: 100%;
+  display: inline-table;
 }
+
+.navbar-menu {
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  /* display: inline-flex; */
+  padding: 0;
+}
+
+/* #navigationBar {
+  border-color: black;
+  border-width: 5px;
+} */
+
+#imgPic {
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  background-color: white;
+  width: fit-content;
+  display: inline-table;
+}
+/* maybe change display, and need something to target outer for border on searchHistory */
+
+#comicBkgrnd {
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  background-color: white;
+  width: fit-content;
+}
+
+.searchHistoryHeader:empty {
+  display: none;
+}
+
+/* #searchHistory:empty (
+  .navbar-menu{
+    display: none;
+  }
+) */

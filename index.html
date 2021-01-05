@@ -5,9 +5,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marvel HeroFinder</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./vendor/jquery-ui.min.css">
+  <link rel="stylesheet" href="./css/searchHistory.css" />
+  <!-- added custom before framework so bulma's framework can toggle -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+
+  <link rel="stylesheet" href="./css/style.css" />
   <!-- google Font -->
   <link
     href="https://fonts.googleapis.com/css2?family=Bangers&family=Monoton&family=Playfair+Display+SC:wght@700&display=swap"
@@ -35,21 +39,6 @@
 
     <div class="columns m-3">
 
-      <!-- Search Bar. We are currently using drop-down list instead -->
-      <!-- <div class="field has-addons ">
-          <form class="column is-two-thirds field is-grouped searchBar">
-            <p class="control is-expanded">
-              <input class="input searchInput" type="text" placeholder="Spider-Man">
-            </p>
-            <p class="control">
-              <button type="submit" class="button is-warning">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </button>
-            </p>
-          </form>
-        </div> -->
 
       <div class="column">
 
@@ -57,24 +46,25 @@
 
         <div class="columns is-centered">
           <div class="column is-4">
+
+            <!-- Search Bar-->
             <div class="field">
-              <form class="field is-grouped searchDropdownBar">
-                <!-- ^^^ should target this one for max width if want button included -->
-                <div class="control is-expanded">
-                  <div class="select is-fullwidth">
-                    <select class="characterSelect">
-                    </select>
-                  </div>
-                </div>
-                <div class="control">
+              <form class="column is-two-thirds field is-grouped searchBar">
+                <p class="control is-expanded">
+                  <input class="input searchInput characterSelect" id="searchInput" type="text"
+                    placeholder="Spider-Man">
+                </p>
+                <p class="control">
                   <button type="submit" class="button is-warning">
                     <span class="icon">
                       <i class="fas fa-search"></i>
                     </span>
                   </button>
-                </div>
+                </p>
               </form>
             </div>
+
+
           </div>
         </div>
 
@@ -88,21 +78,22 @@
 
             <div class="field is-grouped">
               <p class="has-text-centered">
-              <h3>Search History</h3>
+              <h3 id="srch" class="searchHistoryHeader"></h3>
               </p>
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+              <a role="button" class="navbar-burger is-hidden" id="searchHistoryNavbar" aria-label="menu"
+                aria-expanded="false">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
             </div>
 
-            <nav class="navbar" id="navigationBar" role="navigation" aria-label="main navigation">
+            <nav class="navbar is-hidden" id="navigationBar" role="navigation" aria-label="main navigation">
 
               <div class="navbar-menu">
 
                 <!-- search history buttons ============================================== -->
-                <div class="card p-3 searchHistory is-align-content-stretch">
+                <div id="searchHistory" class="card p-3 searchHistory is-align-content-stretch is-hidden">
                   <!-- buttons are placed here -->
 
                 </div>
@@ -111,6 +102,7 @@
               </div>
             </nav>
 
+            <!-- maybe add opaque div here to retain size? or offset by 4 -->
 
           </div>
 
@@ -124,19 +116,22 @@
 
               <div class="columns">
                 <div class="column is-6">
-                  <h2 id="characterName"></h2>
-                  <img src="https://bulma.io/images/placeholders/128x128.png" class="m-3" id="heroPic" />
+                  <div id="imgPic">
+                    <h2 id="characterName"></h2>
+                    <br>
+                    <img src="./images/MarvelHeadShot.jpg" id="heroPic" />
+                  </div>
                 </div>
 
                 <div class="column is-6">
                   <!-- Radar chart to show character stats such as power, speed, etc -->
                   <p class="has-text-centered m-3">
                     <span>
-                      <h3>Stats</h3>
+                      <h3 id="statsTitle">stats</h3>
                     </span>
                   </p>
                   <div class="characterStats mt-3">
-                    <!-- <div class="statsTitle">Stats</div> -->
+
                     <div class="chartjs-radar">
                       <canvas id="radarChart" width="300" height="300"></canvas>
                     </div>
@@ -157,11 +152,7 @@
               </div>
 
             </div>
-
           </div>
-
-
-
         </div>
         <!-- end of 3 col nesting-->
       </div>
@@ -190,8 +181,12 @@
       </div>
     </div>
 
-    <div class="columns is-centered">
+    <div class="columns is-centered is-justify-content-center">
       <div class="column is-flex-wrap-wrap GIFspot">
+<!-- 
+        <img src="" width="128" height="128" class="m-3" />
+
+        <img src="" width="128" height="128" class="m-3" />   
 
         <img src="" width="128" height="128" class="m-3" />
 
@@ -207,11 +202,7 @@
 
         <img src="" width="128" height="128" class="m-3" />
 
-        <img src="" width="128" height="128" class="m-3" />
-
-        <img src="" width="128" height="128" class="m-3" />
-
-        <img src="" width="128" height="128" class="m-3" />
+        <img src="" width="128" height="128" class="m-3" /> -->
       </div>
     </div>
   </div>
@@ -225,6 +216,10 @@
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
   <!-- ^^ script enabling easy icon usage -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <script src="./vendor/jquery-ui.min.js"></script>
+
+  <script src="./js/possheroes.js"></script>
+  <script src="./js/autocomplete.js"></script>
   <script src="script.js"></script>
 </body>
 
