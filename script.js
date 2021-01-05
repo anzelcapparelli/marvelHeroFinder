@@ -126,13 +126,11 @@ $(function () {
 
     }
 
+    var storedButtons;
     function init() {
-        var storedButtons = JSON.parse(localStorage.getItem("buttons"));
+        storedButtons = JSON.parse(localStorage.getItem("buttons"));
         if (storedButtons !== null) {
             characterSearchHistory = storedButtons;
-        }
-        if (storedButtons === null) {
-            $(".searchHistoryHeader").text("");
         }
         createButtons();
         searchComicCharacter(localStorage.getItem("lastSearched"));
@@ -145,6 +143,10 @@ $(function () {
 
     //Creates the character buttons
     function createButtons() {
+        if (characterSearchHistory.length > 0) {
+            $(".searchHistoryHeader").text("Search History");
+            $("#searchHistoryNavbar").attr("class","navbar-burger");
+        }
         $(".searchHistory").empty();
         for (var buttonCount = 0; buttonCount < characterSearchHistory.length; buttonCount++) {
             var characterButtonEl = $("<button>").attr("value", characterSearchHistory[buttonCount]).text(characterSearchHistory[buttonCount]);
@@ -179,7 +181,6 @@ $(function () {
     // toggles the search history on mobile version
 
     $(".navigation").on("click", ".navbar-burger", function () {
-        console.log("navbar-burger works")
         $(".navbar-menu").toggleClass("is-active");
     })
 
@@ -217,9 +218,6 @@ $(function () {
             }
             // gets all GIFs from search with superhero in the title
 
-            console.log(acceptedGIFs);
-            console.log(acceptedGIFs.length);
-            console.log(offsetNum);
             //accepted gifs no longer getting into array! b/c not getting to 10 GIFs! ==> dont think loop is working? Brute it first...
             // want it to stop when it stops getting GIFs (b/c SOMETHING IS STOPPING IT)    or it's not looping even once ==> no print (not enough)
 
