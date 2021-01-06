@@ -175,6 +175,7 @@ h2 {
 }
 
 .navbar-menu {
+  max-width: 600px;
   border-style: solid;
   border-color: black;
   border-width: 5px;
