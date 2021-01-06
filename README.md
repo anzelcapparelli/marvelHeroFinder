@@ -1,7 +1,12 @@
 # marvelHeroFinder
 
-![Marvel Character Finder](./Images/mainScreenshot.jpg)
-![Marvel Character Finder](./Images/mainScreenshotPart2.jpg)
+## Desktop Layout
+![Marvel Character Finder](./images/mainScreenshot.jpg)
+![Marvel Character Finder](./images/mainScreenshotPart2.jpg)
+
+## Mobile Layout
+![Marvel Character Finder](./images/mobileScreenshot.jpg)
+![Marvel Character Finder](./images/mobileScreenshotPart2.jpg)
 
 [Link to site](https://anzelcapparelli.github.io/marvelHeroFinder/) <br>
 [Link to Github repository](https://github.com/anzelcapparelli/marvelHeroFinder/) <br>
@@ -91,5 +96,5 @@ SOFTWARE.
 
 ## Credits
 [Eric Chen](https://github.com/EricChen96) <br>
-[Anzel Capparelli](GITHUB URL) <br>
-[Timothy Smith](GITHUB URL)
+[Anzel Capparelli](https://github.com/anzelcapparelli) <br>
+[Timothy Smith](https://github.com/TimothySmith66)
